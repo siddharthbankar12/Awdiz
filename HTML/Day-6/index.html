@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day-6</title>
+    <style>
+      input:invalid,
+      textarea:invalid {
+        background-color: red;
+      }
+      input:valid,
+      textarea:valid {
+        background-color: greenyellow;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <input value="ReadOnly" readonly />
+      <input value="Disabled" disabled />
+    </div>
+    <br />
+
+    <div>
+      <label for="name">Type your Name: </label>
+      <input id="name" value="Siddharth" minlength="5" maxlength="12" /><br />
+      <label for="message">Type your Message:</label>
+      <textarea
+        id="message"
+        minlength="10"
+        placeholder="message"
+        maxlength="20"
+      ></textarea>
+    </div>
+    <br />
+
+    <div>
+      <label for="date">Date: </label
+      ><input
+        id="date"
+        type="date"
+        min="2024-12-01"
+        max="2024-12-31"
+        step="1"
+      /><br />
+
+      <label for="month">Month: </label
+      ><input id="month" type="month" min="2023-12" step="2" /><br />
+
+      <label for="week">Week: </label
+      ><input id="week" type="week" min="2024-W36" step="3" /><br />
+
+      <label for="time">Time: </label
+      ><input id="time" type="time" min="09:00" step="900" /><br />
+
+      <label for="number">Number: </label
+      ><input id="number" type="number" min="0" step="2" max="100" /><br />
+
+      <label for="range">Range: </label
+      ><input id="range" type="range" min="60" step="5" max="100" /><br />
+    </div>
+    <br />
+
+    <div>
+      <label for="text">Text:</label>
+      <input id="text" value="pattern" pattern="\w{4,10}" /><br />
+      <label for="number">Number:</label>
+      <input id="number" pattern="\d{4,4}" />
+    </div>
+    <br />
+
+    <div>
+      <form>
+        <fieldset>
+          <legend>Form</legend>
+          <label for="email">Email :</label><br />
+          <input
+            id="email"
+            type="email"
+            pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+            required
+            autofocus
+          /><br />
+          <label for="password">Password :</label><br />
+          <input id="password" type="password" required /><br />
+          <input type="submit" /><br />
+        </fieldset>
+      </form>
+    </div>
+  </body>
+</html>

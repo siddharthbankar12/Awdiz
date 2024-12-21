@@ -1,0 +1,77 @@
+<!-- shift + 1 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day-5</title>
+    <style>
+      body{
+        background-color: antiquewhite;
+      }
+      .col-red {
+        color: red;
+      }
+      .bg-blue {
+        background-color: blue;
+      }
+      label {
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <fieldset>
+        <legend>
+          <h1 class="weight-bold" style="text-align: center">Form</h1>
+        </legend>
+
+        <label for="fname">First Name:</label>
+        <input
+          type="text"
+          id="fname"
+          placeholder="type your first name"
+        /><br /><br />
+
+        <label for="lname">Last Name:</label>
+        <input
+          type="text"
+          id="lname"
+          placeholder="type your last name"
+        /><br /><br />
+
+        <label for="number">Mobile Number:</label>
+        <input type="text" id="number" value="+91" /><br /><br />
+
+        <label for="emial">Email:</label>
+        <input
+          type="email"
+          id="emial"
+          placeholder="abc@gmail.com"
+        /><br /><br />
+
+        <label for="car">Select a Car:</label>
+        <select id="car">
+          <option value="">Please select</option>
+          <option value="BMW">BMW</option>
+          <option value="HONDA">HONDA</option>
+          <option value="TATA">TATA</option></select
+        ><br /><br />
+
+        <label for="message">Send Message:</label><br />
+        <textarea id="message" rows="5" cols="20"></textarea><br /><br />
+
+        <label for="date">Date:</label>
+        <input type="date" id="date" /><br /><br />
+
+        <button onclick="WelcomeMessage()">Submit</button>
+      </fieldset>
+    </form>
+  </body>
+  <script>
+    function WelcomeMessage() {
+      alert("Welcome.");
+    }
+  </script>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS</title>
+    <link rel="stylesheet" href="./index.css" />
+    <style>
+      .col-red {
+        color: red;
+      }
+
+      p.col-red {
+        color: yellow;
+        font-weight: bolder;
+      }
+
+      h1,
+      p {
+        background-color: aqua;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="col-red border-black-opacity">This is h1 tag with opacity</h1>
+
+    <p class="col-red">This is p tag</p>
+
+    <p>This is p tag without class col-red</p>
+
+    <h2>This is h2 tag</h2>
+
+    <div class="bg-image">This is div tag</div>
+
+    <h1 class="border-testing">Testing borders</h1>
+    <input
+      placeholder="input with class border none"
+      class="border-none"
+    /><br /><br />
+
+    <div class="br-10"></div>
+  </body>
+</html>

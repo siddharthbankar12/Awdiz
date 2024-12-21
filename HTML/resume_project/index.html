@@ -1,0 +1,260 @@
+<!-- Picture -> img 
+Name h1 bold
+role  h2
+number h2
+email h2
+techstack h2 bold
+
+Projects 3 - dl dt dd 
+dt -> Project Title -> a tag and onclick redirect to somewhere 
+dd -> Techstack, Description features
+
+Education table 
+srno, school name, yog, %
+3 rows
+
+Techstack
+Frotend ul 
+li react angular vue 
+Backend ol 
+li express 
+Database ol 
+li mongodb cosmmosdb
+
+Certification
+Full stack development - Awdiz Institute  h1 
+img Certificate
+
+Contact Me 
+Form 
+name  input text required
+contact number input number required
+message textarea rows 8 cols 10 required
+Submit -> alert -> Data recevied. -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Siddharth Resume</title>
+    <style>
+      body {
+        background-color: antiquewhite;
+      }
+
+      .main {
+        padding: 10px;
+        border: 2px solid black;
+      }
+
+      th,
+      td {
+        text-align: center;
+        padding: 10px;
+        border: 2px solid black;
+      }
+
+      .center-underline {
+        text-align: center;
+        text-decoration: underline;
+      }
+
+      .bold-underline {
+        font-weight: bold;
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <h1 class="center-underline">RESUME</h1>
+      <hr />
+      <br />
+      <div class="personaldetails">
+        <img
+          src="./img/photo2.jpg"
+          alt="siddharth"
+          height="150"
+          style="border: 2px solid black"
+        />
+        <h1 class="bold-underline">Siddharth Dadaram Bankar</h1>
+        <h2>Role: Full Stack Developer</h2>
+        <h2>Email ID: siddharthbankar1204@gmail.com</h2>
+        <h2>
+          LinkedIn:<a
+            style="text-decoration: none"
+            href="https://www.linkedin.com/in/siddharth-bankar-561a50236/"
+            target="_blank"
+          >
+            Siddharth Bankar</a
+          >
+        </h2>
+        <h2>
+          GitHub:<a
+            style="text-decoration: none"
+            href="https://github.com/siddharthbankar12"
+            target="_blank"
+          >
+            siddharthbankar12</a
+          >
+        </h2>
+        <p style="text-align: justify; font-size: 23px">
+          <b>Objective: </b>Motivated and enthusiastic IT intern eager to apply
+          my technical knowledge and passion for technology in a professional
+          setting. Equipped with strong problem-solving skills, a solid
+          understanding of programming languages, and a desire to learn and
+          adapt to emerging technologies. Seeking an opportunity to contribute
+          to organizational growth while honing my skills and expanding my
+          knowledge in the IT industry.
+        </p>
+      </div>
+      <hr />
+
+      <div class="projects">
+        <h2 class="bold-underline">Projects</h2>
+        <dl>
+          <dt class="bold-underline">Online Computer & Laptop Store</dt>
+          <dd>
+            <b>Description: </b>Developed a comprehensive e-commerce platform
+            for computer and laptop products with features such as detailed
+            product listings, advanced search and filtering, secure user
+            authentication, and streamlined checkout. Includes admin tools for
+            product and inventory management.
+          </dd>
+          <dd>
+            <b>Technologies Used: </b> HTML5, CSS3, JavaScript, React.js,
+            Node.js, Express.js, MongoDB, Stripe, PayPal API
+          </dd>
+          <br />
+
+          <dt class="bold-underline">TextUtils React Application</dt>
+          <dd>
+            <b>Description: </b>Developed a text manipulation tool using React
+            that offers features such as word and character count, text
+            conversion (uppercase, lowercase, title case), and text clearing.
+            Provides a user-friendly interface for easy text analysis and
+            editing.
+          </dd>
+          <dd><b>Technologies Used: </b> React.js, JavaScript, HTML, CSS</dd>
+        </dl>
+      </div>
+      <hr />
+
+      <div class="education">
+        <h2 class="bold-underline">Education</h2>
+        <table style="border-collapse: collapse">
+          <thead>
+            <tr>
+              <th>Sr. No.</th>
+              <th>Degree</th>
+              <th>Institute Name</th>
+              <th>Year of Graduation</th>
+              <th>Percentage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>MCA</td>
+              <td>MIT-ADT College of Management, Pune</td>
+              <td>2022 - 2024</td>
+              <td>77.90%</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>B.Sc. CS</td>
+              <td>
+                Pillai HOC College of Arts, Commerce and Science, Rasayani
+              </td>
+              <td>2019 - 2022</td>
+              <td>88.63%</td>
+            </tr>
+          </tbody>
+        </table>
+        <br />
+      </div>
+      <hr />
+
+      <div class="skills">
+        <h2 class="bold-underline">Skills</h2>
+        <p><b>Frontend:</b></p>
+        <ol>
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>JavaScript</li>
+          <li>React</li>
+        </ol>
+
+        <p><b>Backend:</b></p>
+        <ol>
+          <li>Next.js</li>
+        </ol>
+
+        <p><b>Database:</b></p>
+        <ol>
+          <li>MongoDB</li>
+          <li>SQL</li>
+        </ol>
+
+        <p><b>Version Control:</b></p>
+        <ol>
+          <li>GitHub</li>
+        </ol>
+      </div>
+      <hr />
+
+      <div class="certification">
+        <h2 class="bold-underline">Certifications</h2>
+        <ol>
+          <li>HTML & CSS</li>
+          <li>Learning SQL Programming</li>
+          <li>MongoDB Essential Training</li>
+          <li>Excel Essential Training (Microsoft 365)</li>
+        </ol>
+      </div>
+      <hr />
+
+      <div class="contact">
+        <form onsubmit="message()">
+          <fieldset>
+            <legend>
+              <h2 class="bold-underline" style="text-align: center">
+                Contact Me
+              </h2>
+            </legend>
+
+            <label for="fname">Name:</label>
+            <input
+              type="text"
+              id="name"
+              placeholder="type your full name"
+            /><br /><br />
+
+            <label for="emial">Email:</label>
+            <input
+              type="email"
+              id="emial"
+              placeholder="abc@gmail.com"
+              required
+            /><br /><br />
+
+            <label for="number">Mobile Number:</label>
+            <input type="text" id="number" value="+91" required /><br /><br />
+
+            <label for="message">Send Message:</label><br />
+            <textarea id="message" rows="5" cols="20" required></textarea
+            ><br /><br />
+
+            <input type="submit" value="Submit" />
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </body>
+  <script>
+    function message() {
+      alert("Data Received.");
+    }
+  </script>
+</html>
