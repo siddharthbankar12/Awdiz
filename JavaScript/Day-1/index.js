@@ -85,9 +85,9 @@ console.log(2 !== 2); // Output: false
 
 // Summary Table for Variables:
 //            Re-assign  Re-declare  Block-Scoped  Global-Scoped  Hoisting
-// var        Yes        Yes         No           Yes            Yes (undefined)
-// let        Yes        No          Yes          No             Yes (TDZ)
-// const      No         No          Yes          No             Yes (TDZ)
+// var        Yes        Yes         No            Yes            Yes (undefined)
+// let        Yes        No          Yes           No             Yes (TDZ)
+// const      No         No          Yes           No             Yes (TDZ)
 
 // Example with block scope and hoisting:
 {
