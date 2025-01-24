@@ -272,3 +272,15 @@ switch (charSwitch) {
 }
 
 console.log(resultSwitch);
+
+// 6. Reverse count of even numbers
+
+let countReverse = 0;
+
+for (let i = 43; i >= 11; i--) {
+  if (i % 2 === 0) {
+    // console.log(`found even number: ${i}`);
+    countReverse++;
+  }
+}
+console.log(countReverse);
