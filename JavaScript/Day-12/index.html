@@ -45,8 +45,8 @@
       <button class="eventTryTwo">event demo 2</button>
     </div>
 
-    <div id="parent">
-      <button id="child">Click Me</button>
+    <div id="first">
+      <button id="second">Click Me</button>
     </div>
 
     <ul id="list">
@@ -82,8 +82,8 @@
       }
 
       let paragraphs = document.getElementsByTagName("p");
-      for (let underline of paragraphs) {
-        underline.style.fontStyle = "italic";
+      for (let italic of paragraphs) {
+        italic.style.fontStyle = "italic";
       }
 
       let newButton = document.createElement("button");
@@ -150,11 +150,11 @@
 
       // An event triggered on a child element bubbles up to its parent and ancestors.
 
-      document.getElementById("parent").addEventListener("click", () => {
+      document.getElementById("first").addEventListener("click", () => {
         console.log("Parent clicked!");
       });
 
-      document.getElementById("child").addEventListener("click", () => {
+      document.getElementById("second").addEventListener("click", () => {
         console.log("Child clicked!");
       });
 
