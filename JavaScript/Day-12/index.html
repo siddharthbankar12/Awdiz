@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .parent {
+        border: 1px solid black;
+        background-color: yellow;
+        padding: 15px;
+      }
+
+      .child {
+        margin: 15px;
+        height: 150px;
+        width: 250px;
+        border: 1px solid black;
+        background-color: red;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="parent">
+      <h1 id="bold">Parent</h1>
+      <div class="child uppercase">
+        <p>one</p>
+      </div>
+      <div class="child uppercase">
+        <p>two</p>
+      </div>
+      <div class="child uppercase">
+        <p>three</p>
+      </div>
+      <button class="eventTryOne">event demo 1</button>
+      <button class="eventTryTwo">event demo 2</button>
+    </div>
+
+    <div id="parent">
+      <button id="child">Click Me</button>
+    </div>
+
+    <ul id="list">
+      <li>item 1</li>
+      <li>item 2</li>
+      <li>item 3</li>
+    </ul>
+
+    <input id="printInput" type="text" onchange="myChanges()" />
+
+    <!-- Script -->
+
+    <script>
+      // /** @type {HTMLElement} */
+      let parentDiv = document.querySelector(".parent");
+      parentDiv.style.backgroundColor = "lightblue";
+
+      let heading = document.getElementById("bold");
+      heading.style.fontWeight = "bold";
+      heading.innerText = heading.innerText + " div";
+
+      let uppercase = document.getElementsByClassName("uppercase");
+      for (let changes of uppercase) {
+        changes.style.textTransform = "uppercase";
+      }
+
+      let childDivs = document.querySelectorAll(".child");
+      let count = 1;
+      for (let div of childDivs) {
+        div.style.backgroundColor = "yellow";
+        div.innerHTML = `<p>child div ${count}</p>`;
+        count++;
+      }
+
+      let paragraphs = document.getElementsByTagName("p");
+      for (let underline of paragraphs) {
+        underline.style.fontStyle = "italic";
+      }
+
+      let newButton = document.createElement("button");
+      newButton.innerText = "Submit";
+
+      parentDiv.append(newButton);
+
+      // node.append(e); // Adds `e` at the end inside `node`
+      // node.prepend(e); // Adds `e` at the start inside `node`
+      // node.before(e); // Adds `e` before `node` (as sibling)
+      // node.after(e); // Adds `e` after `node` (as sibling)
+
+      newButton.setAttribute("class", "btn");
+      newButton.style.backgroundColor = "black";
+      newButton.style.color = "white";
+      newButton.style.padding = "15px";
+
+      let removeText = document.createElement("p");
+      removeText.innerText = "remove text";
+
+      parentDiv.append(removeText);
+
+      removeText.remove();
+
+      //button class name : eventTry
+
+      // single click
+
+      function myFunction() {
+        console.log("event trigger demo 1 single click");
+      }
+
+      let eventButtonSingleClick = document.querySelector(".eventTryOne");
+      eventButtonSingleClick.addEventListener("click", myFunction);
+
+      eventButtonSingleClick.removeEventListener("click", myFunction); //remove single click
+
+      // dbl click
+
+      let eventButtonDoubleClick = document.querySelector(".eventTryTwo");
+
+      eventButtonDoubleClick.addEventListener("dblclick", () => {
+        console.log("event trigger demo 2 dbl click");
+      });
+
+      // Local Storage Operations
+
+      // Store data
+      localStorage.setItem("username", "Siddharth Bankar");
+      localStorage.setItem("name", "Siddharth");
+      localStorage.setItem("surname", "Bankar");
+
+      // Retrieve data
+      let username = localStorage.getItem("username");
+      console.log(username);
+
+      // Remove data
+      localStorage.removeItem("username");
+
+      // Clear all data
+      localStorage.clear();
+
+      // Event  Bubbling
+
+      // An event triggered on a child element bubbles up to its parent and ancestors.
+
+      document.getElementById("parent").addEventListener("click", () => {
+        console.log("Parent clicked!");
+      });
+
+      document.getElementById("child").addEventListener("click", () => {
+        console.log("Child clicked!");
+      });
+
+      // Event Delegation
+
+      // Instead of adding event listeners to multiple child elements, a single listener is added to a parent to handle events using bubbling.
+
+      document.getElementById("list").addEventListener("click", (event) => {
+        if (event.target.tagName === "LI") {
+          console.log("Clicked:", event.target.textContent);
+        }
+      });
+
+      // myChanges value
+
+      function myChanges() {
+        console.log(document.getElementById("printInput").value);
+      }
+    </script>
+  </body>
+</html>

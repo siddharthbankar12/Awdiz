@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .main-container {
+        width: 50%;
+        margin: 0 auto;
+      }
+
+      .container {
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid black;
+      }
+      #username,
+      #password {
+        width: 60%;
+        margin: 15px auto;
+        border: 1px solid black;
+        outline: none;
+        height: 25px;
+        text-decoration: none;
+
+        padding: 0 5px;
+      }
+
+      #button {
+        width: 30%;
+        margin: 15px auto;
+        border: 1px solid black;
+        height: 25px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="container">
+        <label for="username"
+          >Username:
+          <input id="username" type="text" />
+        </label>
+
+        <label for="password"
+          >Password:
+          <input id="password" type="password" />
+        </label>
+
+        <button id="button" onclick="updateList()">Submit</button>
+      </div>
+      <div class="list"></div>
+    </div>
+  </body>
+  <script>
+    window.onload = function () {
+      alert("chal click kr etha, Shanpana nko karu");
+      displayUsers();
+    };
+
+    function updateList() {
+      let userName = document.getElementById("username").value;
+      let userPassword = document.getElementById("password").value;
+
+      if (!userName || !userPassword) {
+        alert("Please enter both username and password.");
+        return;
+      }
+
+      let users = JSON.parse(localStorage.getItem("users")) || [];
+
+      for (let i = 0; i < users.length; i++) {
+        if (users[i].username === userName) {
+          alert("ahes re baba tu list madhe already");
+          return;
+        }
+      }
+
+      users.push({ username: userName, password: userPassword });
+      localStorage.setItem("users", JSON.stringify(users));
+
+      alert("chal ho bajula, zala tuza nav add list madhe");
+
+      document.getElementById("username").value = "";
+      document.getElementById("password").value = "";
+
+      displayUsers();
+    }
+
+    function displayUsers() {
+      let users = JSON.parse(localStorage.getItem("users")) || [];
+      let listContainer = document.querySelector(".list");
+      listContainer.innerHTML = "<h3>Users list:</h3>";
+
+      let count = 1;
+      users.forEach((user) => {
+        listContainer.innerHTML += `<p>${count}. Username: ${user.username}, Password: ${user.password}</p>`;
+        count++;
+      });
+    }
+  </script>
+</html>

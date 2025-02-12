@@ -53,13 +53,13 @@ function charCount(str) {
       if (str[i] === str[j]) {
         count++;
       }
-      emptyObj[`${str[i]}`] = count;
+      emptyObj[str[i]] = count;
     }
     // console.log([str[i]], count);
   }
   return emptyObj;
 }
-console.log(charCount("hello")); // Output: { h: 1, e: 1, l: 2, o: 1 }
+console.log(charCount("hellol")); // Output: { h: 1, e: 1, l: 2, o: 1 }
 console.log(charCount("banana")); // Output: { b: 1, a: 3, n: 2 }
 
 // Find the Intersection of Two Arrays

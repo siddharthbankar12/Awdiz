@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stringify and parse</title>
+  </head>
+  <body>
+    <script>
+      // 1. String - Stored directly
+      localStorage.setItem("username", "Siddharth");
+      console.log(localStorage.getItem("username")); // Output: "Siddharth"
+
+      // 2. Number - Stored as a string, needs conversion when retrieving
+      localStorage.setItem("age", 24);
+      console.log(localStorage.getItem("age")); // Output: "24" (as a string)
+      console.log(parseInt(localStorage.getItem("age"))); // Output: 24 (as a number)
+
+      // 3. Boolean - Stored as a string, needs JSON.parse() when retrieving
+      localStorage.setItem("isLoggedIn", true);
+      console.log(localStorage.getItem("isLoggedIn")); // Output: "true" (as a string)
+      console.log(JSON.parse(localStorage.getItem("isLoggedIn"))); // Output: true (as a boolean)
+
+      // 4. Array - Needs JSON.stringify() to store and JSON.parse() to retrieve
+      let hobbies = ["coding", "gaming"];
+      localStorage.setItem("hobbies", JSON.stringify(hobbies));
+      console.log(JSON.parse(localStorage.getItem("hobbies"))); // Output: ["coding", "gaming"]
+
+      // 5. Object - Needs JSON.stringify() to store and JSON.parse() to retrieve
+      let user = { name: "Siddharth", age: 24 };
+      localStorage.setItem("user", JSON.stringify(user));
+      console.log(JSON.parse(localStorage.getItem("user"))); // Output: { name: "Siddharth", age: 24 }
+
+      // 6. Function, Symbol, and undefined values - Cannot be stored
+      let obj = {
+        name: "Siddharth",
+        greet: function () {
+          return "Hello";
+        },
+      };
+      localStorage.setItem("obj", JSON.stringify(obj));
+      console.log(localStorage.getItem("obj"));
+      // Output: '{"name":"Siddharth"}' (Function is removed)
+    </script>
+  </body>
+</html>
