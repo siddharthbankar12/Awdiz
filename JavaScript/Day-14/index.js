@@ -116,14 +116,16 @@ console.log(multiply(2)(3)(4));
 
 const person1 = {
   name: "Siddharth",
-  greet: function (age) {
-    console.log(`Hello, my name is ${this.name} and I am ${age} years old.`);
+  greet: function (age, address) {
+    console.log(
+      `Hello, my name is ${this.name} and I am ${age} years old, I am from ${address}`
+    );
   },
 };
 
 const anotherPerson1 = { name: "Ashish" };
 
-person1.greet.call(anotherPerson1, 24);
+person1.greet.call(anotherPerson1, 24, "Pen");
 
 // apply() - Calls the function immediately and takes arguments as an array.
 // functionName.apply(thisArg, [arg1, arg2, ...]);
