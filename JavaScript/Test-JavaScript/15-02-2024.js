@@ -76,13 +76,33 @@ function findMissingNumber(arr, n) {
   for (let i = 0; i < n; i++) {
     if (arr[i] === count) {
       count++;
+      continue;
     } else {
       return count;
     }
   }
 }
-console.log(findMissingNumber([1, 2, 4, 5], 5)); // Output: 3
+console.log(findMissingNumber([1, 4, 5], 5)); // Output: 3
 console.log(findMissingNumber([1, 3, 4, 5, 6], 6)); // Output: 2
+
+function multipleMissNo(arr, n) {
+  let missingNumbers = [];
+  let count = 1;
+  let i = 0;
+
+  while (count <= n) {
+    if (i < arr.length && arr[i] === count) {
+      i++;
+    } else {
+      missingNumbers.push(count);
+    }
+    count++;
+  }
+
+  return missingNumbers;
+}
+
+console.log(multipleMissNo([1, 4, 5], 5)); // Output: [2, 3]
 
 // 5. Implement a String Compression Algorithm
 

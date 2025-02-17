@@ -68,7 +68,7 @@ user1.greet();
 const user2 = {
   name: "Siddharth",
   greet: function () {
-    const sayHello = () => console.log(this.name); // ✅ "Siddharth"
+    const sayHello = () => console.log(this.name); //"Siddharth"
     sayHello();
   },
 };
