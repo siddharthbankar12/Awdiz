@@ -1,28 +1,36 @@
 console.log("1");
 
-const delay = new Promise((resolve) => {
+console.log("async await execute start");
+
+const delay = new Promise((resolve, reject) => {
   setTimeout(() => {
-    resolve("async await execute");
-  }, 5000);
+    resolve("2");
+  }, 2000);
 });
 
 async function demo() {
   let result = await delay;
   console.log(result);
 
-  console.log("done");
+  console.log("execution done");
+
+  const ab = () => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        console.log("3");
+        resolve();
+      }, 4000);
+    });
+  };
+
+  await ab();
+
+  console.log("4");
 
   setTimeout(() => {
-    console.log("2");
-  }, 4000);
+    console.log("end");
+  }, 5000);
 
-  console.log("3");
-
-  setTimeout(() => {
-    console.log("4");
-  }, 2000);
-
-  console.log("end");
+  console.log("5");
 }
-
 demo();
