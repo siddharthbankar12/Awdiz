@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login and Registration</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="registration">
+        <h1>Registration Form</h1>
+        <label for="rname"
+          >Full Name : <input type="text" name="rname" id="rname"
+        /></label>
+        <label for="rusername"
+          >Username :
+          <input type="email" name="rusername" id="rusername" required />
+        </label>
+        <label for="rpassword"
+          >Password : <input type="password" name="rpassword" id="rpassword"
+        /></label>
+        <button id="btn" class="submit" onclick="submit()">Submit</button>
+      </div>
+      <div class="login">
+        <h1>Login Form</h1>
+
+        <label for="lusername"
+          >Username : <input type="email" name="lusername" id="lusername" />
+        </label>
+        <label for="lpassword"
+          >Password : <input type="password" name="lpassword" id="lpassword"
+        /></label>
+        <button id="btn" class="login" onclick="login()">Login</button>
+      </div>
+      <script src="./app.js"></script>
+    </div>
+  </body>
+</html>
