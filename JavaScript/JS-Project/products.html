@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products Page</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script
+      src="https://kit.fontawesome.com/eabddcf6a1.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="left">
+        <p>Products</p>
+      </div>
+      <div class="right">
+        <p>Add Product</p>
+        <p>All Products list</p>
+        <div class="userDetail">
+          <i class="fa-solid fa-user"></i>
+          <p>Siddharth Bankar</p>
+        </div>
+        <button class="logoutBtn" onclick="logout()">Logout</button>
+      </div>
+    </div>
+
+    <div class="mainContainer">
+      <div class="containerTwo">
+        <h2 id="underLine">Add Product</h2>
+        <form id="productForm">
+          <input
+            type="text"
+            id="productName"
+            placeholder="Enter Product Name..."
+            required
+          />
+
+          <input
+            type="number"
+            id="productPrice"
+            placeholder="Enter Product Price..."
+            required
+          />
+
+          <input
+            type="text"
+            id="productCategory"
+            placeholder="Enter Product Category..."
+            required
+          />
+
+          <input
+            type="text"
+            id="productImage"
+            placeholder="Enter Product img url..."
+            required
+          />
+          <button type="submit">Add Product</button>
+        </form>
+      </div>
+
+      <div id="productAll">
+        <h2 id="underLine">Product List</h2>
+        <div class="productList"></div>
+      </div>
+    </div>
+    <script src="./app.js"></script>
+  </body>
+</html>

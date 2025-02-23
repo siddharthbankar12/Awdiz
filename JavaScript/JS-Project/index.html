@@ -3,13 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login and Registration</title>
+    <title>Registration Page</title>
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
     <div class="container">
+      <div class="selectionBtn">
+        <button class="selbtn1">Registration</button>
+        <button class="selbtn2">Log In</button>
+      </div>
       <div class="registration">
-        <h1>Registration Form</h1>
         <label for="rname"
           >Full Name : <input type="text" name="rname" id="rname"
         /></label>
@@ -20,19 +23,19 @@
         <label for="rpassword"
           >Password : <input type="password" name="rpassword" id="rpassword"
         /></label>
-        <button id="btn" class="submit" onclick="submit()">Submit</button>
+        <button id="btnreg" onclick="submit()">Create Account</button>
       </div>
-      <div class="login">
-        <h1>Login Form</h1>
 
+      <div class="login">
         <label for="lusername"
           >Username : <input type="email" name="lusername" id="lusername" />
         </label>
         <label for="lpassword"
           >Password : <input type="password" name="lpassword" id="lpassword"
         /></label>
-        <button id="btn" class="login" onclick="login()">Login</button>
+        <button id="btnlog" onclick="loginUser()">Login</button>
       </div>
+
       <script src="./app.js"></script>
     </div>
   </body>
