@@ -10,33 +10,37 @@
     <div class="container">
       <div class="selectionBtn">
         <button class="selbtn1">Registration</button>
-        <button class="selbtn2">Log In</button>
+        <button class="selbtn2" onclick="showLogin()">Log In</button>
       </div>
+
       <div class="registration">
-        <label for="rname"
-          >Full Name : <input type="text" name="rname" id="rname"
-        /></label>
-        <label for="rusername"
-          >Username :
+        <form onsubmit="registerUser(event)">
+          <label for="rname">Full Name:</label>
+          <input type="text" name="rname" id="rname" required />
+
+          <label for="rusername">Username:</label>
           <input type="email" name="rusername" id="rusername" required />
-        </label>
-        <label for="rpassword"
-          >Password : <input type="password" name="rpassword" id="rpassword"
-        /></label>
-        <button id="btnreg" onclick="submit()">Create Account</button>
+
+          <label for="rpassword">Password:</label>
+          <input type="password" name="rpassword" id="rpassword" required />
+
+          <button type="submit" id="btnreg">Create Account</button>
+        </form>
       </div>
 
-      <div class="login">
-        <label for="lusername"
-          >Username : <input type="email" name="lusername" id="lusername" />
-        </label>
-        <label for="lpassword"
-          >Password : <input type="password" name="lpassword" id="lpassword"
-        /></label>
-        <button id="btnlog" onclick="loginUser()">Login</button>
-      </div>
+      <div class="login" style="display: none">
+        <form onsubmit="loginUser(event)">
+          <label for="lusername">Username:</label>
+          <input type="email" name="lusername" id="lusername" required />
 
-      <script src="./app.js"></script>
+          <label for="lpassword">Password:</label>
+          <input type="password" name="lpassword" id="lpassword" required />
+
+          <button type="submit" id="btnlog">Login</button>
+        </form>
+      </div>
     </div>
+
+    <script src="./app.js" defer></script>
   </body>
 </html>

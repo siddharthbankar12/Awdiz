@@ -16,11 +16,9 @@
         <p>Products</p>
       </div>
       <div class="right">
-        <p>Add Product</p>
-        <p>All Products list</p>
         <div class="userDetail">
           <i class="fa-solid fa-user"></i>
-          <p>Siddharth Bankar</p>
+          <p class="updateName">User Name</p>
         </div>
         <button class="logoutBtn" onclick="logout()">Logout</button>
       </div>
@@ -29,7 +27,7 @@
     <div class="mainContainer">
       <div class="containerTwo">
         <h2 id="underLine">Add Product</h2>
-        <form id="productForm">
+        <form id="productForm" onsubmit="addProduct(event)">
           <input
             type="text"
             id="productName"
@@ -55,9 +53,8 @@
             type="text"
             id="productImage"
             placeholder="Enter Product img url..."
-            required
           />
-          <button type="submit">Add Product</button>
+          <button type="submit" class="probtn">Add Product</button>
         </form>
       </div>
 
@@ -66,6 +63,6 @@
         <div class="productList"></div>
       </div>
     </div>
-    <script src="./app.js"></script>
+    <script src="./app.js" defer></script>
   </body>
 </html>

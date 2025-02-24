@@ -8,22 +8,23 @@
 
 .container {
   margin: 200px auto;
-  width: 450px;
+  width: 400px;
   border: 2px solid black;
   display: flex;
   flex-direction: column;
   font-size: 18px;
-  /* gap: 15px; */
+}
+
+form {
+  width: 90%;
+  margin: 0 auto;
 }
 
 .registration,
 .login {
   width: 100%;
   padding: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: center;
+
   gap: 20px;
   border: 1px solid black;
   padding-top: 20px;
@@ -85,6 +86,7 @@ input {
 
 #underLine {
   text-decoration: underline;
+  text-align: center;
 }
 
 .navbar {
@@ -95,6 +97,8 @@ input {
   color: white;
   font-size: larger;
   padding: 20px 30px;
+  position: sticky;
+  top: 0;
 }
 
 .left {
@@ -119,14 +123,18 @@ input {
 
 .logoutBtn {
   font-size: medium;
-  padding: 5px;
+  padding: 5px 15px;
   border-radius: 6px;
-  background-color: rgb(181, 177, 177);
-  color: black;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  border: 2px solid white;
 }
 
 .mainContainer {
   display: flex;
+  justify-content: center;
+  align-items: start;
 }
 
 .containerTwo {
@@ -139,6 +147,8 @@ input {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  position: sticky;
+  top: 120px;
 }
 
 form {
@@ -152,7 +162,7 @@ input {
   padding: 8px;
 }
 
-button {
+.probtn {
   background-color: black;
   color: white;
   padding: 10px;
@@ -163,6 +173,7 @@ button {
 
 button:hover {
   background-color: #383838;
+  color: white;
 }
 
 #productAll {
@@ -170,7 +181,36 @@ button:hover {
   margin: 50px 20px;
   padding: 20px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   border: 2px solid black;
   border-radius: 10px;
+}
+
+.productList {
+  width: 100%;
+  padding-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.product {
+  border: 1px solid black;
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: capitalize;
+
+  & img {
+    border: 1px solid black;
+    height: 250px;
+    width: 250px;
+    object-fit: cover;
+  }
 }
