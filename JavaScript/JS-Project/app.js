@@ -66,6 +66,7 @@ function registerUser(event) {
 }
 
 let userLoginDetail = {};
+// let loginID = localStorage.setItem("userid");
 
 // Login user
 
@@ -93,6 +94,7 @@ function loginUser(event) {
     if (check.username === logUser && check.password === logPass) {
       validUser = true;
       userLoginDetail = check;
+      localStorage.setItem("loginuserid", JSON.stringify(check.username));
       break;
     }
   }
@@ -127,7 +129,7 @@ if (userRegister && userLogin) {
 // Logout user
 
 function logout() {
-  localStorage.removeItem("userlogindetail");
+  localStorage.removeItem("loginuserid");
   window.location.href = "index.html";
 }
 
@@ -138,30 +140,52 @@ if (document.querySelector(".logoutBtn")) {
 // login user fetch details
 
 function loginUserDetail() {
-  userLoginDetail = {
-    username: userLoginDetail.username,
-    password: userLoginDetail.password,
-    fullname: userLoginDetail.fullname,
-  };
+  let loginUserID = JSON.parse(localStorage.getItem("loginuserid"));
+  let loginUserAdd = JSON.parse(localStorage.getItem("userlogindetail")) || [];
 
-  localStorage.setItem("userlogindetail", JSON.stringify(userLoginDetail));
-  window.location.href = "products.html";
+  let userExists = false;
 
-  showProductList();
-}
+  for (let user of loginUserAdd) {
+    if (user.username === loginUserID) {
+      userExists = true;
+      window.location.href = "products.html";
+      return;
+    }
+  }
 
-// Show logged-in user details
+  if (!userExists) {
+    let newUserData = {
+      username: userLoginDetail.username,
+      password: userLoginDetail.password,
+      fullname: userLoginDetail.fullname,
+      products: [],
+    };
 
-function userDataShow() {
-  let userdata = JSON.parse(localStorage.getItem("userlogindetail"));
-  let userNameUpdate = document.querySelector(".updateName");
-
-  if (userdata && userNameUpdate) {
-    userNameUpdate.innerText = userdata.fullname;
+    loginUserAdd.push(newUserData);
+    localStorage.setItem("userlogindetail", JSON.stringify(loginUserAdd));
+    window.location.href = "products.html";
   }
 }
 
-userDataShow();
+// show login details
+
+function showLoginUserData() {
+  let loginUserID = JSON.parse(localStorage.getItem("loginuserid"));
+  let userdata = JSON.parse(localStorage.getItem("userlogindetail"));
+  let userNameUpdate = document.querySelector(".updateName");
+
+  if (userdata) {
+    for (let check of userdata) {
+      if (check.username === loginUserID) {
+        if (userNameUpdate) {
+          userNameUpdate.innerText = check.fullname;
+        }
+      }
+    }
+  }
+}
+
+showLoginUserData();
 
 // add product details
 
@@ -173,10 +197,20 @@ let proImgUrl = document.querySelector("#productImage");
 function addProduct(event) {
   event.preventDefault();
 
-  let user = JSON.parse(localStorage.getItem("userlogindetail")) || {};
+  let loginUserID = JSON.parse(localStorage.getItem("loginuserid"));
+  let user = JSON.parse(localStorage.getItem("userlogindetail")) || [];
 
-  if (!user.products) {
-    user.products = [];
+  let userNo = -1;
+
+  for (let i = 0; i < user.length; i++) {
+    if (user[i].username === loginUserID) {
+      userNo = i;
+      break;
+    }
+  }
+
+  if (!user[userNo].products) {
+    user[userNo].products = [];
   }
 
   let productName = proName.value;
@@ -200,7 +234,7 @@ function addProduct(event) {
     productPrice: productPrice,
   };
 
-  user.products.push(newProduct);
+  user[userNo].products.push(newProduct);
 
   localStorage.setItem("userlogindetail", JSON.stringify(user));
 
@@ -216,16 +250,27 @@ function addProduct(event) {
 
 function showProductList() {
   let productList = document.querySelector(".productList");
-  let user = JSON.parse(localStorage.getItem("userlogindetail")) || {};
+  let user = JSON.parse(localStorage.getItem("userlogindetail")) || [];
 
-  if (!user.products || user.products.length === 0) {
+  let loginUserID = JSON.parse(localStorage.getItem("loginuserid"));
+
+  let userNo = -1;
+
+  for (let i = 0; i < user.length; i++) {
+    if (user[i].username === loginUserID) {
+      userNo = i;
+      break;
+    }
+  }
+
+  if (!user[userNo].products || user[userNo].products.length === 0) {
     productList.innerHTML = "<p>No products available</p>";
     return;
   }
 
   productList.innerHTML = "";
 
-  user.products.forEach((product) => {
+  user[userNo].products.forEach((product) => {
     let productDiv = document.createElement("div");
     productDiv.classList.add("product");
 
