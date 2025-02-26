@@ -193,11 +193,12 @@ button:hover {
 
 .productList {
   width: 100%;
-  padding-top: 15px;
+  padding: 15px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
   gap: 30px;
+  /* border: 1px solid black; */
 }
 
 .product {
@@ -206,6 +207,7 @@ button:hover {
   text-align: center;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   gap: 15px;
   font-size: 18px;
@@ -215,8 +217,8 @@ button:hover {
 
   & img {
     /* border: 1px solid black; */
-    height: 250px;
-    width: 250px;
+    height: 200px;
+    width: 200px;
     object-fit: fill;
   }
 

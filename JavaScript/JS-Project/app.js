@@ -282,8 +282,8 @@ function showProductList() {
       <p class="proname">${product.productName}</p>
       <i class="fa-solid fa-trash delete-product" onclick="deleteProduct(${idx})"></i>
       <img src="${product.productImgUrl}" alt="Product Image" />
-      <div class="procategory">${product.productCategory}</div>
-      <div class="proprice">₹${product.productPrice}</div>
+      <div class="procategory">Category: ${product.productCategory}</div>
+      <div class="proprice">Price: ₹${product.productPrice}</div>
     `;
 
     productList.prepend(productDiv);
