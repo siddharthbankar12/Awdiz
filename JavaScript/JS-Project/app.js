@@ -44,6 +44,9 @@ function registerUser(event) {
   for (let check of usersList) {
     if (check.username === regUser) {
       alert("already register");
+      userFullName.value = "";
+      userReg.value = "";
+      passReg.value = "";
       return;
     }
   }
@@ -66,7 +69,6 @@ function registerUser(event) {
 }
 
 let userLoginDetail = {};
-// let loginID = localStorage.setItem("userid");
 
 // Login user
 
@@ -218,11 +220,12 @@ function addProduct(event) {
   let productCategory = proCategory.value;
   let productImgUrl = proImgUrl.value;
 
-  // Validate image extension
-  let validExtensions = ["jpg", "jpeg", "png", "gif"];
-  let fileExtension = productImgUrl.split(".").pop().toLowerCase();
+  // default product image
+  // let validExtensions = ["jpg", "jpeg", "png", "gif"];
+  // let fileExtension = productImgUrl.split(".").pop().toLowerCase();
 
-  if (!validExtensions.includes(fileExtension)) {
+  // if (!validExtensions.includes(fileExtension))
+  if (!productImgUrl) {
     productImgUrl =
       "https://png.pngtree.com/png-vector/20240824/ourmid/pngtree-shopping-cart-filled-with-boxes-3d-render-stock-illustration-clipart-png-image_13600393.png";
   }
@@ -270,19 +273,20 @@ function showProductList() {
 
   productList.innerHTML = "";
 
-  user[userNo].products.forEach((product) => {
+  user[userNo].products.forEach((product, idx) => {
     let productDiv = document.createElement("div");
     productDiv.classList.add("product");
 
     productDiv.innerHTML = `
 
       <p class="proname">${product.productName}</p>
+      <i class="fa-solid fa-trash delete-product" onclick="deleteProduct(${idx})"></i>
       <img src="${product.productImgUrl}" alt="Product Image" />
       <div class="procategory">${product.productCategory}</div>
       <div class="proprice">₹${product.productPrice}</div>
     `;
 
-    productList.appendChild(productDiv);
+    productList.prepend(productDiv);
   });
 }
 
@@ -292,3 +296,26 @@ document.addEventListener("DOMContentLoaded", function () {
     showProductList();
   }
 });
+
+// delete product btn
+
+let deleteProductBtn = document.querySelectorAll(".delete-product");
+
+function deleteProduct(productIndex) {
+  let users = JSON.parse(localStorage.getItem("userlogindetail"));
+  let loginID = JSON.parse(localStorage.getItem("loginuserid"));
+
+  let userNo = null;
+
+  for (let i = 0; i < users.length; i++) {
+    if (users[i].username === loginID) {
+      userNo = i;
+      break;
+    }
+  }
+
+  users[userNo].products.splice(productIndex, 1);
+  localStorage.setItem("userlogindetail", JSON.stringify(users));
+
+  showProductList();
+}

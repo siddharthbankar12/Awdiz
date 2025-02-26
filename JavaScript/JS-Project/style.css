@@ -99,6 +99,11 @@ input {
   padding: 20px 30px;
   position: sticky;
   top: 0;
+  z-index: 1;
+}
+
+.updateName {
+  text-transform: capitalize;
 }
 
 .left {
@@ -206,11 +211,19 @@ button:hover {
   font-size: 18px;
   font-weight: bold;
   text-transform: capitalize;
+  position: relative;
 
   & img {
-    border: 1px solid black;
+    /* border: 1px solid black; */
     height: 250px;
     width: 250px;
-    object-fit: cover;
+    object-fit: fill;
+  }
+
+  & .delete-product {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    color: black;
   }
 }
