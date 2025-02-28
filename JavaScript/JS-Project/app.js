@@ -113,6 +113,8 @@ function loginUser(event) {
   passLog.value = "";
 }
 
+// show register and login page
+
 function showRegister() {
   registrationDiv.style.display = "flex";
   loginDiv.style.display = "none";
@@ -218,35 +220,41 @@ function addProduct(event) {
   let productName = proName.value;
   let productPrice = proPrice.value;
   let productCategory = proCategory.value;
-  let productImgUrl = proImgUrl.value;
+  let productFile = proImgUrl.files[0];
 
   // default product image
   // let validExtensions = ["jpg", "jpeg", "png", "gif"];
   // let fileExtension = productImgUrl.split(".").pop().toLowerCase();
 
-  // if (!validExtensions.includes(fileExtension))
-  if (!productImgUrl) {
-    productImgUrl =
-      "https://png.pngtree.com/png-vector/20240824/ourmid/pngtree-shopping-cart-filled-with-boxes-3d-render-stock-illustration-clipart-png-image_13600393.png";
-  }
+  // if (!validExtensions.includes(fileExtension)) {
+  //   // if (!productImgUrl) {
+  //   productImgUrl =
+  //     "https://png.pngtree.com/png-vector/20240824/ourmid/pngtree-shopping-cart-filled-with-boxes-3d-render-stock-illustration-clipart-png-image_13600393.png";
+  // }
 
-  let newProduct = {
-    productName: productName,
-    productImgUrl: productImgUrl,
-    productCategory: productCategory,
-    productPrice: productPrice,
+  const reader = new FileReader();
+  reader.onload = function (e) {
+    let productImgUrl = e.target.result;
+
+    let newProduct = {
+      productName: productName,
+      productImgUrl: productImgUrl,
+      productCategory: productCategory,
+      productPrice: productPrice,
+    };
+
+    user[userNo].products.push(newProduct);
+
+    localStorage.setItem("userlogindetail", JSON.stringify(user));
+
+    showProductList();
+
+    proName.value = "";
+    proImgUrl.value = "";
+    proCategory.value = "";
+    proPrice.value = "";
   };
-
-  user[userNo].products.push(newProduct);
-
-  localStorage.setItem("userlogindetail", JSON.stringify(user));
-
-  showProductList();
-
-  proName.value = "";
-  proImgUrl.value = "";
-  proCategory.value = "";
-  proPrice.value = "";
+  reader.readAsDataURL(productFile);
 }
 
 // show products

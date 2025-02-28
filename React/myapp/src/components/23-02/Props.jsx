@@ -1,12 +1,16 @@
 import React from "react";
 
-const Props = ({ counter, setCounter }) => {
+const Props = (props) => {
   return (
     <div>
-      <h1>props {counter}</h1>
+      <h1>props {props.counterProps}</h1>
 
-      <button onClick={() => setCounter((add) => add + 1)}>+ </button>
-      <button onClick={() => setCounter((sub) => (sub > 1 ? sub - 1 : sub))}>
+      <button onClick={() => props.setCounterProps((add) => add + 1)}>+</button>
+      <button
+        onClick={() =>
+          props.setCounterProps((sub) => (sub > 1 ? sub - 1 : sub))
+        }
+      >
         -
       </button>
     </div>

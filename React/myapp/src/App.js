@@ -1,7 +1,7 @@
 import "./App.css";
 import Home from "./components/20-02/Home";
 import Login from "./components/20-02/Login";
-import Register from "./components/20-02/Register";
+import Register from "./components/28-02/Register";
 import { Routes, Route } from "react-router-dom";
 import UseState from "./components/22-02/UseState";
 import UseEffect from "./components/22-02/UseEffect";
@@ -29,7 +29,9 @@ function App() {
         />
         <Route
           path="/props"
-          element={<Props counter={counter} setCounter={setCounter} />}
+          element={
+            <Props counterProps={counter} setCounterProps={setCounter} />
+          }
         />
         <Route path="/todo" element={<Todo />} />
       </Routes>
