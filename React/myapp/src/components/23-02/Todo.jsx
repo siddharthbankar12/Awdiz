@@ -1,20 +1,37 @@
 import React, { useState } from "react";
 
 const Todo = () => {
-  const [todos, setTodos] = useState(["first", "second"]);
+  const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState("");
+
+  const [editIndex, setEditIndex] = useState(null);
 
   function handleChange(event) {
     setNewTodo(event.target.value);
   }
 
   function handleSubmit() {
-    if (newTodo.trim() === "") return;
-    setTodos([...todos, newTodo]);
+    if (editIndex !== null) {
+      const updatedTodos = [...todos];
+      updatedTodos[editIndex] = newTodo;
+      setTodos(updatedTodos);
+      setEditIndex(null);
+    } else {
+      setTodos([...todos, newTodo]);
+    }
     setNewTodo("");
   }
 
-  console.log(todos);
+  function deleteTodo(i) {
+    const deletedTodos = [...todos];
+    deletedTodos.splice(i, 1);
+    setTodos(deletedTodos);
+  }
+
+  function editTodo(todo, i) {
+    setNewTodo(todo);
+    setEditIndex(i);
+  }
 
   return (
     <div>
@@ -25,12 +42,18 @@ const Todo = () => {
         value={newTodo}
         onChange={handleChange}
       />
-      <button onClick={handleSubmit}>Add Todo</button>
+      <button onClick={handleSubmit}>
+        {editIndex !== null ? "Update Todo" : "Add Todo"}
+      </button>
       <h1>my todos:</h1>
       {todos.map((todo, i) => (
-        <h5 key={i}>
-          {i + 1}. {todo}
-        </h5>
+        <div key={i} style={{ display: "flex" }}>
+          <p>
+            {i + 1}. {todo}
+          </p>
+          <button onClick={() => deleteTodo(i)}>delete</button>
+          <button onClick={() => editTodo(todo, i)}>edit</button>
+        </div>
       ))}
     </div>
   );
