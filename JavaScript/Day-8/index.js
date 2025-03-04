@@ -103,6 +103,7 @@ greet();
 // - `push()` adds elements to the end of an array.
 // - `unshift()` adds elements to the beginning of an array.
 // - `shift()` removes the first element of the array.
+// - `pop()` removes the last element of the array.
 // - `splice()` can add or remove elements from an array at a specific index.
 // - `slice()` returns a shallow copy of a portion of an array.
 // - `map()` creates a new array by applying a function to each element.

@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
+  const route = useNavigate();
+
   const [userData, setUserData] = useState({
     name: "",
     email: "",
@@ -68,7 +71,8 @@ function Register() {
           value={userData.confirmPassword}
         />
         <br />
-        <button type="submit">submit</button>
+        <button type="submit">Register</button>
+        <button onClick={() => route("/login")}>login</button>
         <br />
       </form>
 

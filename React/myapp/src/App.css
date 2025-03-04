@@ -1,7 +1,26 @@
-.App {
+/* .App {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 15px;
   text-align: center;
+} */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  /* background-color: black;
+  color: white; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  background-color: white;
+  color: black;
+  margin: 0 5px;
 }
