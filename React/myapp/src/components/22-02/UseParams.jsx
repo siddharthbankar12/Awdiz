@@ -17,7 +17,9 @@ function UseParams() {
     <div>
       <h1>UseParams</h1>
       {numbers.map((uniqueid) => (
-        <button onClick={() => router(`/useparams/paramsproduct/${uniqueid}`)}>
+        <button
+          onClick={() => router(`/use-params/params-product/${uniqueid}`)}
+        >
           product {uniqueid}
         </button>
       ))}

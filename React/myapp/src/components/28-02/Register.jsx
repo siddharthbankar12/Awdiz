@@ -19,10 +19,35 @@ function Register() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    // // Basic validation
+    // if (
+    //   !userData.name ||
+    //   !userData.email ||
+    //   !userData.password ||
+    //   !userData.confirmPassword
+    // ) {
+    //   alert("Please fill in all fields");
+    //   return;
+    // }
+
+    if (userData.password !== userData.confirmPassword) {
+      alert("Passwords do not match");
+      return;
+    }
+
+    // Add user to the list
     setAllUser([...allUser, userData]);
-    // console.log(allUser);
-    setUserData({ name: "", email: "", password: "", confirmPassword: "" });
+
+    // Reset form fields
+    setUserData({
+      name: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    });
   };
+
   return (
     <div>
       <h1>Register Page</h1>
@@ -42,6 +67,7 @@ function Register() {
           name="name"
           onChange={handleChange}
           value={userData.name}
+          required
         />
         <br />
         <label htmlFor="email">Email : </label> <br />
@@ -51,6 +77,7 @@ function Register() {
           name="email"
           onChange={handleChange}
           value={userData.email}
+          required
         />
         <br />
         <label htmlFor="password">Password : </label> <br />
@@ -71,8 +98,12 @@ function Register() {
           value={userData.confirmPassword}
         />
         <br />
-        <button type="submit">Register</button>
-        <button onClick={() => route("/login")}>login</button>
+        <button id="btn" type="submit">
+          Register
+        </button>
+        <button id="btn" onClick={() => route("/login")}>
+          login
+        </button>
         <br />
       </form>
 

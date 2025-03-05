@@ -52,8 +52,12 @@ const Login = () => {
           />
           <br />
 
-          <button type="submit">login</button>
-          <button onClick={() => route("/register")}>Register</button>
+          <button id="btn" type="submit">
+            login
+          </button>
+          <button id="btn" onClick={() => route("/register")}>
+            Register
+          </button>
         </form>
       </div>
       <div>

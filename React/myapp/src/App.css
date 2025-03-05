@@ -17,10 +17,15 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
-button {
+#btn {
   background-color: white;
   color: black;
   margin: 0 5px;
+}
+
+button {
+  padding: 5px;
 }
