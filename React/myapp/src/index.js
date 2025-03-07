@@ -4,12 +4,18 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
+import TodoContextProvider from "./context/TodoContext";
+// import CounterContextProvider from "./context/CounterContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      {/* <CounterContextProvider> */}
+      <TodoContextProvider>
+        <App />
+      </TodoContextProvider>
+      {/* </CounterContextProvider> */}
     </BrowserRouter>
   </React.StrictMode>
 );

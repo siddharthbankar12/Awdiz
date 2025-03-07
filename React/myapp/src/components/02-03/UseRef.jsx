@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 
 const UseRef = () => {
   const counter = useRef(1);
+  console.log(counter.current, "after page render");
 
   const [stateCounter, setStateCounter] = useState(100);
 
@@ -14,7 +15,7 @@ const UseRef = () => {
         <button
           onClick={() => {
             counter.current += 1;
-            alert(counter.current);
+            console.log(counter.current);
           }}
         >
           +
