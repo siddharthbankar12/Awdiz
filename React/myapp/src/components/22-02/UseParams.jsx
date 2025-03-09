@@ -5,6 +5,7 @@ function UseParams() {
   let products = 10;
 
   const router = useNavigate();
+  // eslint-disable-next-line
   const [numbers, setNumbers] = useState(() => {
     let arr = [];
     for (let i = 1; i <= products; i++) {

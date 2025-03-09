@@ -16,6 +16,9 @@ import UseRef from "./components/02-03/UseRef";
 import UseReducer from "./components/02-03/UseReducer";
 import ContextCounter from "./components/04-03/ContextCounter";
 import ContextTodo from "./components/04-03/ContextTodo";
+import ReduxCounter from "./components/06-03/ReduxCounter";
+import Main from "./components/Main";
+import ReduxTodo from "./components/06-03/ReduxTodo";
 
 function App() {
   const [counter, setCounter] = useState(1);
@@ -23,6 +26,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
+        <Route path="/" element={<Main />} />
         <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
@@ -46,6 +50,8 @@ function App() {
         <Route path="/use-reducer" element={<UseReducer />} />
         <Route path="/context-counter" element={<ContextCounter />} />
         <Route path="/context-todo" element={<ContextTodo />} />
+        <Route path="/redux-counter" element={<ReduxCounter />} />
+        <Route path="/redux-todo" element={<ReduxTodo />} />
       </Routes>
     </div>
   );
