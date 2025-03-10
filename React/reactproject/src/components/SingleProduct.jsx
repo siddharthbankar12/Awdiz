@@ -12,7 +12,7 @@ const SingleProduct = () => {
       const response = await axios.get(
         `https://fakestoreapi.com/products/${id}`
       );
-      console.log(response.data);
+
       setSingleProduct(response.data);
     } catch (error) {
       console.log(error);

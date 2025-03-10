@@ -7,7 +7,7 @@ const userSlice = createSlice({
     login: (state, action) => {
       localStorage.setItem("token", action.payload);
       state.token = action.payload;
-      alert("login successful");
+      alert("Login successful");
     },
     logout: (state) => {
       localStorage.removeItem("token");

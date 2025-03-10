@@ -1,21 +1,21 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../store/userSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Navbar = () => {
-  const route = useNavigate();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const token = localStorage.getItem("token");
+  const token = useSelector((state) => state.user.token);
 
   const loginUser = () => {
-    route("/login");
+    navigate("/login");
   };
 
   const logoutUser = () => {
     dispatch(logout());
-    route("/login");
+    navigate("/login");
   };
 
   return (
@@ -23,7 +23,7 @@ const Navbar = () => {
       <div className="my-6 w-full flex justify-around">
         <h1
           onClick={() => {
-            route("/");
+            navigate("/");
           }}
           className="cursor-pointer"
         >
@@ -32,7 +32,7 @@ const Navbar = () => {
         <ul className="flex gap-10">
           <li
             onClick={() => {
-              route("/all-products");
+              navigate("/all-products");
             }}
             className="cursor-pointer"
           >

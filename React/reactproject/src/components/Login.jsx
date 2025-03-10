@@ -1,12 +1,13 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { login } from "../store/userSlice";
 
 const Login = () => {
-  const router = useNavigate();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const token = useSelector((state) => state.user.token);
 
   const [counter, setCounter] = useState(1);
 
@@ -33,12 +34,12 @@ const Login = () => {
 
       dispatch(login(response.data.token));
 
-      router("/all-products");
+      navigate("/all-products");
     } catch (error) {
       if (counter === 2) {
         const token = "fuktya_ghe_chal_token";
         dispatch(login(token));
-        router("/all-products");
+        navigate("/all-products");
         setCounter(1);
       } else {
         alert("please try again");
@@ -46,6 +47,12 @@ const Login = () => {
       }
     }
   };
+
+  useEffect(() => {
+    if (token) {
+      navigate("/all-products");
+    }
+  }, [token]);
 
   return (
     <>

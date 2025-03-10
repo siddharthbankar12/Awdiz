@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const AllProducts = () => {
-  const router = useNavigate();
+  const navigate = useNavigate();
 
   const token = useSelector((state) => state.user.token);
 
@@ -13,7 +13,6 @@ const AllProducts = () => {
   const getAllProducts = async () => {
     try {
       const response = await axios.get("https://fakestoreapi.com/products");
-      console.log(response.data, "response");
       setAllProducts(response.data);
     } catch (error) {
       console.log(error);
@@ -21,31 +20,30 @@ const AllProducts = () => {
   };
 
   useEffect(() => {
-    if (token == null) {
-      router("/login");
+    if (token) {
+      getAllProducts();
+    } else {
+      navigate("/login");
     }
-    getAllProducts();
-  }, [token, router]);
+  }, [token]);
 
   return (
     <>
       <div className="w-[80%] m-auto">
-        {/* <h1 className="my-5">All Products</h1> */}
-
         <div className="flex flex-wrap justify-between gap-5">
           {allProducts.length > 0 ? (
             allProducts.map((product) => (
               <div
                 key={product.id}
                 onClick={() =>
-                  router(`/all-products/single-product/${product.id}`)
+                  navigate(`/all-products/single-product/${product.id}`)
                 }
                 className="w-[23%] p-5 flex flex-col gap-3 border rounded-[12px] justify-start cursor-pointer"
               >
                 <img
                   src={product.image}
                   alt={product.title}
-                  style={{ height: "60%", width: "100%", borderRadius: "10px" }}
+                  className="h-[60%] w-full rounded-[10px] object-cover"
                 />
                 <h2>
                   <b>Title : </b> {product.title}
