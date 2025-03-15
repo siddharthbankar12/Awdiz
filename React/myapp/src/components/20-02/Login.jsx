@@ -13,7 +13,7 @@ const Login = () => {
 
   const handleChange = (event) => {
     setUserDetails({ ...userDetail, [event.target.name]: event.target.value });
-    console.log(userDetail);
+    // console.log(userDetail, "details");
   };
 
   const handleSubmit = (event) => {
@@ -22,6 +22,8 @@ const Login = () => {
     setUsers([...users, userDetail]);
     setUserDetails({ name: "", email: "", password: "", confirmPassword: "" });
   };
+
+  // console.log(users, "users");
 
   return (
     <>

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Starbucks Dashboard</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+        font-size: 18px;
+      }
+
+      /* navbar  */
+
+      .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        background-color: white;
+      }
+
+      .container-navbar {
+        width: 80%;
+        margin: 0 auto;
+        display: flex;
+        padding: 15px 0;
+        justify-content: space-between;
+      }
+
+      .left-nav {
+        display: flex;
+        align-items: center;
+        gap: 45px;
+      }
+
+      .logo-icon {
+        width: 40px;
+        height: 40px;
+      }
+
+      .navbar-options {
+        display: flex;
+        align-items: center;
+        gap: 45px;
+
+        & p {
+          cursor: pointer;
+        }
+
+        & p:hover {
+          text-decoration: underline;
+          color: #006241;
+        }
+      }
+
+      .right-nav {
+        display: flex;
+        align-items: center;
+        gap: 45px;
+      }
+
+      .search-bar {
+        display: flex;
+        padding: 10px 14px;
+        gap: 12px;
+        border-radius: 16px;
+        box-shadow: 0px 10px 15px 2px rgba(0, 0, 0, 0.1);
+
+        & input {
+          width: 250px;
+          border: none;
+          outline: none;
+        }
+
+        & span {
+          color: grey;
+        }
+      }
+
+      .account-profile {
+        display: flex;
+        color: grey;
+
+        & span {
+          font-size: 30px;
+        }
+      }
+
+      /* know more  */
+
+      .know-more-section {
+        background-color: #1e3932;
+      }
+
+      .container-kms {
+        width: 80%;
+        margin: 0 auto;
+        color: white;
+        display: flex;
+        padding: 30px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        & p {
+          font-size: larger;
+        }
+
+        & :nth-child(2) {
+          border: 1px solid white;
+          font-size: 14px;
+          padding: 8px;
+          border-radius: 14px;
+        }
+      }
+
+      /* Beverage Subscription */
+
+      .beverage-subscription {
+        width: 80%;
+        margin: 65px auto;
+        display: flex;
+
+        justify-content: space-between;
+        background-color: #09907f;
+        color: white;
+        padding: 15px;
+        border-radius: 12px;
+
+        & .img {
+          width: 150px;
+          height: 150px;
+          padding: 20px;
+          img {
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+          }
+        }
+
+        & .description {
+          padding-bottom: 35px;
+
+          & p {
+            margin: 20px 0;
+          }
+
+          & :nth-child(2) {
+            font-weight: 900;
+            font-size: 22px;
+          }
+        }
+
+        & .btn-km {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: end;
+
+          & :nth-child(1) {
+            font-size: 12px;
+          }
+          & :nth-child(2) {
+            font-size: 14px;
+            background-color: white;
+            color: black;
+            padding: 10px 55px;
+            border-radius: 18px;
+          }
+        }
+      }
+
+      /* Handcrafted Curations */
+
+      .handcrafted-curation {
+        width: 80%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        /* border: 1px solid black; */
+
+        & .heading {
+          font-size: 26px;
+          font-weight: bolder;
+          color: #304942;
+        }
+
+        & .options-food {
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+
+      .img-opt {
+        width: 100px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+
+        & img {
+          width: 100%;
+          height: 100%;
+          border-radius: 100%;
+        }
+
+        & p {
+          font-size: 16px;
+          color: black;
+          font-weight: 500;
+        }
+      }
+
+      /* Barista Recommends */
+
+      .barista-recommends {
+        background-color: #edebe9;
+        margin: 65px 0;
+        border: 1px solid black;
+      }
+
+      .br-container {
+        width: 80%;
+        margin: 0 auto;
+      }
+
+      .top-br {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        & .head-br-left {
+          font-size: 26px;
+          font-weight: bolder;
+          color: #304942;
+          display: flex;
+        }
+
+        & .head-br-right {
+          color: #09907f;
+          font-size: 16px;
+        }
+      }
+
+      .cart-br {
+        display: flex;
+        background-color: white;
+
+        & .cart-img-price {
+          width: 100px;
+          height: 100px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+
+          & img {
+            width: 80%;
+            height: 80%;
+            border-radius: 12px;
+          }
+
+          & p{
+            
+          }
+        }
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="container-navbar">
+        <div class="left-nav">
+          <div class="logo">
+            <img
+              class="logo-icon"
+              src="https://www.starbucks.in/assets/icon/logo.png"
+              alt="logo"
+            />
+          </div>
+          <div class="navbar-options">
+            <p>Home</p>
+            <p>Gift</p>
+            <p>Order</p>
+            <p>Pay</p>
+            <p>Store</p>
+          </div>
+        </div>
+        <div class="right-nav">
+          <div class="search-bar">
+            <span class="material-symbols-outlined"> search </span>
+            <input type="text" placeholder="Looking for something specific?" />
+          </div>
+          <div class="account-profile">
+            <span class="material-symbols-outlined"> account_circle </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="know-more-section">
+      <div class="container-kms">
+        <p>Starbucks</p>
+        <p>Know More</p>
+      </div>
+    </div>
+
+    <div class="beverage-subscription">
+      <div class="img">
+        <img
+          src="https://preprodtsbstorage.blob.core.windows.net/cms/uploads/285_x_595_App_removebg_preview_2_c4bc942184.png"
+          alt="img"
+        />
+      </div>
+      <div class="description">
+        <p>Starbucks</p>
+        <p>Beverage Subscription</p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita
+          quibusdam error a eos quidem? Minima!
+        </p>
+      </div>
+      <div class="btn-km">
+        <p>*T&C Apply</p>
+        <p>Know More</p>
+      </div>
+    </div>
+
+    <div class="handcrafted-curation">
+      <p class="heading">Handcrafted Curations</p>
+      <div class="options-food">
+        <div class="img-opt">
+          <img
+            src="https://starbucksstatic.cognizantorderserv.com/Category/Small/webP/Drinks.webp"
+            alt="img"
+          />
+          <p>Bestseller</p>
+        </div>
+        <div class="img-opt">
+          <img
+            src="https://starbucksstatic.cognizantorderserv.com/Category/Small/webP/Drinks.webp"
+            alt="img"
+          />
+          <p>Bestseller</p>
+        </div>
+        <div class="img-opt">
+          <img
+            src="https://starbucksstatic.cognizantorderserv.com/Category/Small/webP/Drinks.webp"
+            alt="img"
+          />
+          <p>Bestseller</p>
+        </div>
+        <div class="img-opt">
+          <img
+            src="https://starbucksstatic.cognizantorderserv.com/Category/Small/webP/Drinks.webp"
+            alt="img"
+          />
+          <p>Bestseller</p>
+        </div>
+        <div class="img-opt">
+          <img
+            src="https://starbucksstatic.cognizantorderserv.com/Category/Small/webP/Drinks.webp"
+            alt="img"
+          />
+          <p>Bestseller</p>
+        </div>
+        <div class="img-opt">
+          <img
+            src="https://starbucksstatic.cognizantorderserv.com/Category/Small/webP/Drinks.webp"
+            alt="img"
+          />
+          <p>Bestseller</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="barista-recommends">
+      <div class="br-container">
+        <div class="top-br">
+          <p class="head-br-left">Barista Recommends</p>
+          <p class="head-br-right">View Menu</p>
+        </div>
+
+        <div class="cart-br">
+          <div class="cart-img-price">
+            <img
+              src="https://starbucksstatic.cognizantorderserv.com/Category/Small/webP/Drinks.webp"
+              alt="img"
+            />
+            <p>$ 420.00</p>
+          </div>
+          <div class="cart0-description">
+            <img src="https://www.starbucks.in/assets/icon/veg.svg" alt="" />
+            <p>Java Chip Frappuccino</p>
+            <p>TALL (345ml) .392kcal</p>
+          </div>
+          <div class="cart-btn">
+            <p>Add Item</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="learn-more-section"></div>
+    <div class="footer"></div>
+  </body>
+</html>

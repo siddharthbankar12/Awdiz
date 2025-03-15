@@ -28,15 +28,16 @@ console.log(zeroMove([0, 0, 1, 0, 5]));
 function generateAllSubstring(string) {
   let arrayString = [];
 
-  let subString = "";
+  // let subString = "";
 
   for (let i = 0; i < string.length; i++) {
-    subString = string[i];
+    let subString = string[i];
     arrayString.push(subString);
     for (let j = i + 1; j < string.length; j++) {
       subString += string[j];
       arrayString.push(subString);
     }
+
     subString = "";
   }
 

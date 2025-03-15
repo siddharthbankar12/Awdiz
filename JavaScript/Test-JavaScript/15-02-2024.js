@@ -4,13 +4,13 @@ var arr = [1, 2, 3, 4, 5, 6];
 
 var target = 7;
 
-function binaryTarget(nums, target) {
+function binaryTarget(arr, target) {
   let left = 0;
-  let right = nums.length - 1;
+  let right = arr.length - 1;
 
   while (left <= right) {
-    let midIdx = Math.floor(left + right / 2);
-    let midEle = nums[midIdx];
+    let midIdx = Math.floor((left + right) / 2);
+    let midEle = arr[midIdx];
 
     if (target == midEle) {
       console.log("element found");

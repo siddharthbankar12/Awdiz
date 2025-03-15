@@ -5,7 +5,7 @@ function UseParams() {
   let products = 10;
 
   const router = useNavigate();
-  // eslint-disable-next-line
+
   const [numbers, setNumbers] = useState(() => {
     let arr = [];
     for (let i = 1; i <= products; i++) {
@@ -17,8 +17,9 @@ function UseParams() {
   return (
     <div>
       <h1>UseParams</h1>
-      {numbers.map((uniqueid) => (
+      {numbers.map((uniqueid, idx) => (
         <button
+          key={idx}
           onClick={() => router(`/use-params/params-product/${uniqueid}`)}
         >
           product {uniqueid}

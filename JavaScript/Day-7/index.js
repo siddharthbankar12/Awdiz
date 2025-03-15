@@ -113,3 +113,10 @@ console.log("---------------------------------------------------------------");
 const myNumbers = [1, 2, 3, 4];
 const myNewNumbers = [...myNumbers, 5, 6, 7, 8];
 console.log(myNewNumbers, "myNewNumbers");
+
+let arrayOne = [1, 2, 3, 4, 5];
+console.log(arrayOne, "before changes");
+const check = [...arrayOne];
+check[2] = 0;
+arrayOne = [...check];
+console.log(arrayOne, "after changes");

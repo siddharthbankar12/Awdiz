@@ -5,11 +5,11 @@ function UseState() {
   const [userLogin, setUserLogin] = useState(true);
 
   function increment() {
-    setCounter((start) => start + 1);
+    setCounter((prev) => prev + 1);
   }
   function decrement() {
     if (counter > 1) {
-      setCounter((start) => start - 1);
+      setCounter((prev) => prev - 1);
     }
   }
   function reset() {

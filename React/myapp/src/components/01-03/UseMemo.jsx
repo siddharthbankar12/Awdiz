@@ -1,5 +1,15 @@
 import React, { useMemo, useState } from "react";
 
+function functionForHeavyCalculation(counter) {
+  //   console.log(counter, "counter");
+
+  for (let i = 0; i < 1000000000; i++) {
+    counter++;
+  }
+
+  return counter;
+}
+
 const UseMemo = () => {
   const [counter, setCounter] = useState(1);
   const [todos, setTodos] = useState([]);
@@ -41,15 +51,5 @@ const UseMemo = () => {
     </>
   );
 };
-
-function functionForHeavyCalculation(counter) {
-  //   console.log(counter, "counter");
-
-  for (let i = 0; i < 1000000000; i++) {
-    counter++;
-  }
-
-  return counter;
-}
 
 export default UseMemo;

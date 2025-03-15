@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const AllProducts = () => {
   const navigate = useNavigate();
 
-  const token = useSelector((state) => state.user.token);
+  const token = localStorage.getItem("token");
 
   const [allProducts, setAllProducts] = useState([]);
 

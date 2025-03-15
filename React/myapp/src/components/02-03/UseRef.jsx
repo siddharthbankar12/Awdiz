@@ -23,7 +23,15 @@ const UseRef = () => {
         <br />
 
         <h1>State Counter : {stateCounter}</h1>
-        <button onClick={() => setStateCounter((prev) => prev + 1)}>+</button>
+        <button
+          onClick={() =>
+            setStateCounter((prev) => {
+              return prev + 1;
+            })
+          }
+        >
+          +
+        </button>
       </div>
     </>
   );

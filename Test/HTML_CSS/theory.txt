@@ -1,0 +1,401 @@
+HTML Questions
+1. What is HTML, and what are its key features?
+ans: HTML is stands for hypertext markup language, 
+html is the standard markup language for creating web pages,  
+html element tell to browser to display on web pages, 
+there are many tags use to create a dynamic web pages
+html describe the structure of web page
+
+2. Explain the difference between HTML4 and HTML5.
+ans: html5 is the latest version of html, in this introduce semantic elements like <header>, <footer>, <article>, <section>, <nav>, <aside>,
+    audio videos support are available, 
+    local storage and session storage support are available
+
+
+3. What are semantic elements in HTML? Give examples.
+ans: semantic element is use the seo, with the help of this developer understand the structure of web page ,
+     <header>,<footer>, <article>, <section>, <nav>, <aside> these tags are commonly use in semantic elements
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li>home</li>
+          <li>contact</li>
+          <li>about</li>
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione tenetur
+        autem libero sunt laboriosam totam!
+      </p>
+    </section>
+    <footer>@copyright 2025</footer>
+    <nav></nav>
+  </body>
+</html>
+
+4. What is the difference between <div> and <span>?
+    ans:
+     <div> - div tag take full width of web page, it it block element
+     <span> - it is a inline element does not start from a new line
+
+
+5. What are the different types of lists in HTML?
+ans: there is 2 types of lists in html: 1)ordered list 2)unordered list
+
+<ol> - this tag is use to ordered list, in this we can create the list by ordered like in number, alphabets, roman numbers
+
+      <ul>
+      <li>apple</li>
+      <li>mango</li>
+      <li>banana</li>
+    </ul>
+
+<ul> - this is use for unordered list,
+    
+    <ol>
+        <li>siddharth</li>
+        <li>ashish</li>
+        <li>samarth</li>
+    </ol>
+
+6. What is the difference between <section>, <article>, and <aside>?
+
+    used to group related content within a webpage. <section> </section>
+
+    used for self-contained, reusable content. <article> </article>
+
+    used for content related to the main content but not essential. <aside> </aside>
+
+
+7. What is the purpose of the <meta> tag in HTML?
+ans: <meta> : this tag use to store meta data of web page, 
+that data  not show on the web page  but very useful data for web browser for seo 
+
+8. What is the difference between block-level and inline elements?
+ans: 
+block-level element is take the full width of web page,
+these element always start on new line
+eg. <div>  </div>
+
+inline element do not take full width of web page
+element does not start on a new line
+eg.<span>  </span>, <a/>
+
+9. How does the <iframe> tag work in HTML?
+
+ans: the <iframe>  tag is used to embed another web page, video, map, document inside the html page,
+
+    <iframe width="560" height="315" 
+    src="m/embed/Hqg8tlX047Q?si=YKd6gE_b3K3K1EVn"
+    title="YouTube video player">
+    </iframe>
+
+
+10. Explain the use of the <figure> and <figcaption> tags.
+
+    <figure> : used to wrap images, videos, charts, or diagrams.
+
+    <figcaption> : provides a caption or description for the content inside <figure>.
+
+
+
+11. What is the difference between <b> and <strong>, and <i> and <em>?
+
+<b> makes text bold for styling purpose
+
+<strong> make text important
+
+<i> give the italic style to the line, word, paragraph
+
+<em> 
+
+
+12. How do you create a table in HTML, and what are <thead>, <tbody>, and <tfoot>?
+
+    <table>
+    <thead>
+        <tr>
+            <th>srno</th>
+            <th>name</th>
+            <th>marks</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>$siddharth</td>
+            <td>50</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>ashish</td>
+            <td>60</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>student total marks</td>
+        </tr>
+    </tfoot>
+</table>
+
+13. What is the difference between the <form> and <fieldset> elements?
+
+<form> : the main container for input fields, buttons, and other form elements,
+sends user data to a server using action and method attributes
+
+<fieldset> : used to group related input fields together,
+improves form structure and accessibility of web page
+
+
+14. What is the data-* attribute, and how can it be used?
+
+
+15. How do you embed audio and video in HTML?
+ans: html provides the <audio> and <video> elements to embed media files directly into webpages,
+    these elements support multiple formats and attributes
+
+
+16. What are the different types of input types in HTML5?
+
+  button :  <input type="button" value="" />
+  checkbox :  <input type="checkbox" name="" id="" />
+  date :  <input type="date" name="" id="" />
+  email :  <input type="email" name="" id="" />
+  password :  <input type="file" name="" id="" />
+  text : <input type="text" />
+  password : <input type="password" name="" id="" />
+
+
+17. What is the difference between localStorage, sessionStorage, and cookies?
+
+localStorage: Stores data permanently until browser will not close
+
+sessionStorage: Stores data only for the session
+
+cookies:  Stores small amounts of data 
+
+18. What is the difference between GET and POST methods in forms?
+
+post: We can use the post value of method attribute when we want to process 
+the  sensitive  data  as  it  does  not  display  the  submitted  data  in  URL.  It  is 
+secured. 
+
+get: The  get  value  of  method  attribute  is  default  value  while  submitting  the 
+form. But this is not secure as it displays data in URL after submitting the form. 
+It is not secure. 
+
+19. How can you make an HTML page accessible?
+
+ans: use semantic tag, meta tag, article,  provide alternative text for images
+
+20. How do you optimize an HTML page for SEO?
+ans:
+SEO improves website visibility on search engines like google,
+use meta-data, heading, article, semantic tags, add image alt attribute, use proper url
+
+
+-->
+
+<!-- CSS Questions
+1. What is CSS, and what are its different types?
+ans: css is stands for cascading style sheet, it is use to design the web page
+
+type: internal - it is use to give the css for html page with the help of style tag under header tag
+      external - it is use to give css by creating a file and like to the html page using link tag under header tag
+      inline - by using style attribute to the specific tag and give an inline css to the element
+
+2. What is the difference between relative, absolute, fixed, and sticky positioning in CSS?
+ans: 
+relative : Moves the element relative to its normal position, position: relative
+
+absolute : moves the element base on its parent container, position: absolute
+
+sticky : stick the element to the specific position, position: sticky
+
+fixed : fix the element to the specific position, position: fixed
+
+
+3. Explain the difference between em, rem, px, %, and vw/vh.
+ans:
+
+px - fixed size, does not scale.
+font-size: 16px;
+
+% - relative to parent size.
+width: 50%; 
+
+vw - elative to viewport width.
+width: 50vh = 50% of screen width
+
+vh - relative to viewport height.
+height: 50vh = 50% of screen height
+
+
+4. What is the difference between inline, block, and inline-block elements?
+ans:
+inline: inline element do not take full width of web page
+element does not start on a new line
+
+block: block-level element is take the full width of web page,
+these element always start on new line
+
+inline-block: take inline element do not take full width
+
+
+5. How does the z-index property work in CSS?
+ans: 
+z-index controls the stacking order of elements on a webpage
+higher values appear on top of web page
+Only works on elements position: relative, absolute, fixed, sticky 
+
+6. What are pseudo-classes and pseudo-elements? Give examples.
+ans: 
+
+pseudo-classes:  modify an element’s style based on its state or position,
+hover, checked, focus
+button:hover {
+  background: blue; 
+}
+
+pseudo-elements: style specific parts of an element,
+before, after, first-letter, first-line
+p::first-letter {
+  font-size: 30px;
+  color: red;
+}
+
+
+
+7. What is the difference between nth-child() and nth-of-type() selectors?
+
+ans:
+nth-child() : any element that is the nth child of its parent
+<ul>
+  <li>item 1</li>
+  <p> paragraph </p>
+  <li>item 2</li>
+  <li>item 3</li>
+</ul>
+
+li:nth-child(2) {
+  color: red;
+}
+target p tag
+
+
+nth-of-type() : nth element of a specific type inside a parent
+
+li:nth-of-type(2) {
+  color: blue;
+}
+target item 3
+
+
+8. How do you create a flexbox layout?
+
+ans: Flexbox is used to create flexible, responsive layouts,
+it is applied using display: flex on a container
+
+
+<div class="container">
+  <div class="box">1</div>
+  <div class="box">2</div>
+  <div class="box">3</div>
+</div>
+
+.container {
+  display: flex;  
+  gap: 10px;  
+}
+
+9. What is the difference between CSS Grid and Flexbox?
+
+ans: 
+use flexbox for a 1-D layout
+use CSS Grid for a 2-D layout 
+
+
+10. What are media queries, and how are they used?
+ans: 
+media queries allow you to apply styles based on screen size, resolution, or device type,
+used for responsive design
+
+@media (max-width: 768px) {
+  body {
+    background-color: lightblue;
+  }
+}
+
+11. How do you make a website responsive using CSS?
+ans:
+responsive design ensures a website looks good on all screen sizes desktop, tablet, mobile,
+using flexible layouts, media queries
+
+@media (max-width: 768px) {
+  body {
+    background-color: lightblue;
+  }
+}
+
+
+12. Explain the difference between min-width, max-width, and width.
+
+width: use fixed size 
+min-width: to ensure the element doesn't shrink too much.
+max-width: to prevent an element from getting too large.
+
+
+13. What are the different CSS units used for responsive design?
+ans: 
+%
+px
+em
+rem
+max-width
+max-height
+width
+height
+
+14. How do you apply a custom font in CSS?
+ans:
+apply custom fonts using Google Fonts, local fonts, or @font-face.
+import font in head -> apply font in css
+
+
+15. What are keyframes in CSS animations?
+16. What is the difference between transform, transition, and animation in CSS?
+17. What is the clip-path property in CSS?
+18. How do you create a sticky footer using CSS?
+
+.footer{
+    position:sticky;
+    bottom: 0;
+    z-index: 1;
+}
+
+19. How do you optimize CSS performance?
+
+
+
+20. What is the difference between visibility: hidden; and display: none;?
+ans: 
+
+visibility: hidden; 
+only visibility is hidden to the web page ,
+element still take space
+
+display: none;
+it apply to the specific element and element do not take space on web page
+
+
