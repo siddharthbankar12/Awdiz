@@ -158,6 +158,7 @@
           flex-direction: column;
           justify-content: space-between;
           align-items: end;
+          text-align: center;
 
           & :nth-child(1) {
             font-size: 12px;
@@ -191,13 +192,17 @@
         & .options-food {
           display: flex;
           justify-content: space-between;
+          flex-wrap: wrap;
         }
       }
 
       .img-opt {
-        width: 100px;
+        width: calc(100% / 6);
+        padding: 20px;
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
         gap: 10px;
         align-items: center;
 
@@ -219,12 +224,30 @@
       .barista-recommends {
         background-color: #edebe9;
         margin: 65px 0;
-        border: 1px solid black;
+        padding: 25px 0;
+        position: relative;
+      }
+
+      .design {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 70px;
+        width: 70px;
+
+        & img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
       }
 
       .br-container {
         width: 80%;
         margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 35px;
       }
 
       .top-br {
@@ -245,9 +268,17 @@
         }
       }
 
+      .cart-items {
+        display: flex;
+      }
+
       .cart-br {
         display: flex;
         background-color: white;
+        padding: 20px;
+        gap: 15px;
+        border-radius: 12px;
+        box-shadow: 0px 10px 15px 15px rgba(0, 0, 0, 0.1);
 
         & .cart-img-price {
           width: 100px;
@@ -263,8 +294,269 @@
             border-radius: 12px;
           }
 
-          & p{
-            
+          & p {
+            font-size: 15px;
+            font-weight: 600;
+            margin-top: 10px;
+          }
+        }
+
+        & .cart-description {
+          & :nth-child(2) {
+            font-size: 16px;
+            font-weight: bold;
+          }
+
+          & :nth-child(3) {
+            font-size: 10px;
+            color: grey;
+          }
+        }
+
+        & .cart-btn {
+          display: flex;
+          align-items: end;
+
+          & p {
+            background-color: #00754a;
+            color: white;
+            border-radius: 18px;
+            font-size: 16px;
+            padding: 5px 15px;
+          }
+        }
+      }
+
+      /* learn-more-section */
+
+      .learn-more-section {
+        background-color: #edebe9;
+        margin: 65px 0;
+        padding: 25px 0;
+      }
+
+      .lr-container {
+        width: 80%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+      }
+
+      .top-lr {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        & .head-lr-left {
+          font-size: 26px;
+          font-weight: bolder;
+          color: #304942;
+          display: flex;
+        }
+
+        & .head-lr-right {
+          color: #09907f;
+          font-size: 16px;
+        }
+      }
+
+      .coffee-more {
+        display: flex;
+        flex-direction: column;
+        background: url("https://preprodtsbstorage.blob.core.windows.net/cms/uploads/ICW_Live_Event_Day5_41f11ca3d2.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        padding: 25px;
+        border-radius: 18px;
+      }
+
+      .cc-btn {
+        width: max-content;
+        background-color: #e6edeb;
+        color: #09907f;
+        padding: 5px 10px;
+        font-size: 12px;
+        border-radius: 12px;
+      }
+
+      .cm-description {
+        color: white;
+        margin-top: 150px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        & :nth-child(1) {
+          font-size: 24px;
+          font-weight: 800;
+        }
+
+        & :nth-child(2) {
+          font-size: 18px;
+          font-weight: 100;
+        }
+      }
+
+      .learn-more-btn {
+        width: max-content;
+        background-color: #e6edeb;
+        color: black;
+        border-radius: 12px;
+        margin-top: 60px;
+
+        & p {
+          padding: 8px 80px;
+          font-size: 14px;
+        }
+      }
+
+      /* footer  */
+
+      .footer {
+        background-color: #0e382c;
+        color: white;
+      }
+
+      .footer-container {
+        width: 83%;
+        margin: 0 auto;
+        padding: 155px 0;
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid white;
+      }
+
+      .footer-options {
+        & ul > li {
+          list-style: none;
+          font-weight: 100;
+          font-size: 14px;
+          margin-top: 35px;
+        }
+      }
+
+      .social-media-options {
+        & .links > i {
+          font-size: 30px;
+          margin-top: 35px;
+          margin-right: 20px;
+        }
+      }
+      .download-options {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 150px;
+      }
+
+      .copyright-section {
+        width: 83%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 25px 0 50px 0;
+
+        .cs-left {
+          display: flex;
+
+          & :nth-child(1) {
+            padding-right: 20px;
+          }
+
+          & :nth-child(2) {
+            border-left: 1px solid white;
+            border-right: 1px solid white;
+            padding: 0 20px;
+          }
+
+          & :nth-child(3) {
+            border-right: 1px solid white;
+            padding: 0 20px;
+          }
+
+          & :nth-child(4) {
+            border-left: 1px solid white;
+            padding-left: 20px;
+          }
+        }
+
+        & p {
+          font-size: 14px;
+          font-weight: 100;
+        }
+      }
+
+      /* responsive */
+
+      @media screen and (min-width: 1500px) {
+        .container-navbar,
+        .container-kms,
+        .beverage-subscription,
+        .handcrafted-curation,
+        .br-container,
+        .lr-container,
+        .footer-container,
+        .copyright-section {
+          width: 60%;
+        }
+      }
+
+      @media screen and (max-width: 1050px) {
+        .container-navbar,
+        .container-kms,
+        .beverage-subscription,
+        .handcrafted-curation,
+        .br-container,
+        .lr-container,
+        .footer-container,
+        .copyright-section {
+          width: 90%;
+        }
+
+        .container-navbar {
+          flex-direction: column;
+          gap: 30px;
+        }
+
+        .left-nav {
+          flex-direction: column;
+        }
+
+        .right-nav {
+          flex-direction: column;
+          gap: 30px;
+        }
+
+        .know-more-section {
+          display: none;
+        }
+
+        .beverage-subscription {
+          gap: 20px;
+          margin-top: 30px;
+        }
+
+        .footer-container {
+          flex-direction: column;
+          gap: 30px;
+          padding: 80px;
+        }
+
+        .copyright-section {
+          flex-direction: column;
+          gap: 30px;
+        }
+      }
+
+      @media screen and (max-width: 750px) {
+        .img-opt {
+          width: calc(100% / 3);
+
+          & img {
+            width: 60%;
           }
         }
       }
@@ -383,31 +675,134 @@
 
     <div class="barista-recommends">
       <div class="br-container">
+        <div class="design">
+          <img
+            src="https://www.starbucks.in/assets/icon/greyleafright.svg"
+            alt=""
+          />
+        </div>
         <div class="top-br">
           <p class="head-br-left">Barista Recommends</p>
           <p class="head-br-right">View Menu</p>
         </div>
 
-        <div class="cart-br">
-          <div class="cart-img-price">
-            <img
-              src="https://starbucksstatic.cognizantorderserv.com/Category/Small/webP/Drinks.webp"
-              alt="img"
-            />
-            <p>$ 420.00</p>
-          </div>
-          <div class="cart0-description">
-            <img src="https://www.starbucks.in/assets/icon/veg.svg" alt="" />
-            <p>Java Chip Frappuccino</p>
-            <p>TALL (345ml) .392kcal</p>
-          </div>
-          <div class="cart-btn">
-            <p>Add Item</p>
+        <div class="cart-items">
+          <div class="cart-br">
+            <div class="cart-img-price">
+              <img
+                src="https://starbucksstatic.cognizantorderserv.com/Category/Small/webP/Drinks.webp"
+                alt="img"
+              />
+              <p>$ 420.00</p>
+            </div>
+            <div class="cart-description">
+              <img src="https://www.starbucks.in/assets/icon/veg.svg" alt="" />
+              <p>Java Chip Frappuccino</p>
+              <p>TALL (345ml) .392kcal</p>
+            </div>
+            <div class="cart-btn">
+              <p>Add Item</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="learn-more-section"></div>
-    <div class="footer"></div>
+
+    <div class="learn-more-section">
+      <div class="lr-container">
+        <div class="top-lr">
+          <p class="head-lr-left">Learn more about the world of coffee!</p>
+          <p class="head-lr-right">Discover More</p>
+        </div>
+
+        <div class="coffee-more">
+          <div class="cm-top">
+            <p class="cc-btn">Coffee Culture</p>
+          </div>
+          <div class="cm-description">
+            <p>Arts & Science Of Coffee Brewing</p>
+            <p>
+              Master the perfect brew with Starbucks! Learn the art and science
+              of coffee brewing.
+            </p>
+          </div>
+          <div class="learn-more-btn">
+            <p>Learn More</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="footer-container">
+        <div class="footer-logo">
+          <img src="https://www.starbucks.in/assets/icon/logo.png" alt="logo" />
+        </div>
+        <div class="footer-options">
+          <h4>About Us</h4>
+          <ul>
+            <li>Our Heritage</li>
+            <li>Coffeehouse</li>
+            <li>Our Company</li>
+          </ul>
+        </div>
+        <div class="footer-options">
+          <h4>Quick Links</h4>
+          <ul>
+            <li>Diversity</li>
+            <li>Community</li>
+            <li>Ethical Sourcing</li>
+            <li>Environmental Stewardhsip</li>
+            <li>Learn More</li>
+          </ul>
+        </div>
+        <div class="footer-options">
+          <h4>Responsibility</h4>
+          <ul>
+            <li>Our Heritage</li>
+            <li>Coffeehouse</li>
+            <li>Our Company</li>
+          </ul>
+        </div>
+
+        <div class="social-media-options">
+          <h4>Social Media</h4>
+          <div class="links">
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-facebook"></i>
+            <i class="fa-brands fa-x-twitter"></i>
+          </div>
+        </div>
+
+        <div class="download-options">
+          <img
+            src="https://www.starbucks.in/assets/images/appstoreAndroid.png"
+            alt=""
+          />
+          <img
+            src="https://www.starbucks.in/assets/images/appstoreiOS.png"
+            alt=""
+          />
+        </div>
+      </div>
+
+      <div class="copyright-section">
+        <div class="cs-left">
+          <p>Web Accessiblity</p>
+          <p>Privacy Statement</p>
+          <p>Terms of Use</p>
+          <p>Contact Us</p>
+        </div>
+
+        <div class="cs-right">
+          <p>© 2025 Starbucks Coffee Company. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://kit.fontawesome.com/eabddcf6a1.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
