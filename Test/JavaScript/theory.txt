@@ -1,0 +1,279 @@
+Basic JavaScript
+1. What are the differences between var, let, and const?
+ans: 
+
+var - it is a type of variables, in var we can redeclare and reassign the variables, it ia a global scope variable, hoisting will be apply on it 
+let - it also a type of variables, in let we cannot redeclare but redeclare and update the variable, it is a block scope variables
+const - it is also type of variables, in this we cannot redeclare  and reassign the variable, also hoisting will not be apply
+
+2. Explain the concept of closures in JavaScript with an example.
+ans: closure is a function that remembers its lexical scope, if executed outside that scope it also remembers,
+this allows child function to access variables from their parent function
+
+ex. 
+
+function parentFunction() { 
+    let a = "parent function variable"; 
+ 
+    function childFunction() { 
+        console.log(a);   
+    } 
+ 
+    return childFunction; 
+} 
+ 
+const check = parentFunction(); 
+check (); 
+
+3. What is hoisting in JavaScript? How does it work?
+ans: function and variable can be use before declaring,
+
+ex. console.log(x);
+    var x = 5
+    output: undefined
+
+    console.log(y);
+    lett y = 5;
+    output: error
+
+
+4. What is the difference between == and === in JavaScript?
+ans: == and ===  is the type comparison operator
+
+== is use to check only value, === is use to strictly check comparison with datatype and value also
+
+
+5. What is an Immediately Invoked Function Expression (IIFE)?
+ans: IIFE runs immediately after function defining
+
+syntax :
+(function() { 
+  // code 
+})(); 
+ 
+ex.
+ 
+(function() { 
+  console.log("run this IIFE"); 
+})(); 
+
+
+6. Explain the difference between null, undefined, and NaN.
+
+null - it means nothing or empty value. 
+let x = null;
+console.log(x); 
+
+undefined - variable declared but not assigned any value
+let y;
+console.log(y); 
+
+NaN - Not a Number, happens when a math operation fails.
+let z = "NaN" / 2;
+console.log(z); 
+
+7. What is event delegation in JavaScript?
+
+
+8. What is the difference between call, apply, and bind methods?
+ans: 
+
+call() - calls the function immediately and takes arguments individually.
+
+const person = {
+  name: "Siddharth",
+  greet: function (age, address) {
+    console.log(
+      `Hello, my name is ${this.name} and I am ${age} years old, I am from ${address}`
+    );
+  },
+};
+
+const anotherPerson = { name: "Ashish" };
+person.greet.call(anotherPerson, 24, "Pen");
+
+
+
+apply() - calls the function immediately and takes arguments as an array
+
+const person = {
+  name: "Siddharth",
+  greet: function (age, country) {
+    console.log(
+      `Hello, my name is ${this.name}, I am ${age} years old, I'm from ${country}.`
+    );
+  },
+};
+
+const anotherPerson = { name: "Ashish" };
+
+person1.greet.apply(anotherPerson, [24, "Pen"]); 
+
+
+
+bind() - returns a new function that you can call later.
+
+const person = {
+  name: "Siddharth",
+  greet: function (age) {
+    console.log(`Hello, my name is ${this.name} and I am ${age} years old.`);
+  },
+};
+
+const anotherPerson = { name: "Ashish" };
+
+const newGreet = person.greet.bind(anotherPerson, 24);
+
+newGreet();
+
+
+9. What are higher-order functions in JavaScript? Provide an example.
+ans: higher order function take another function as  parameter or returns a function
+
+function operation(a, b, check) {
+  return check(a, b);
+}
+
+function add(x, y) {
+  return x + y;
+}
+
+console.log(operation(10, 20, add));
+
+
+10. Explain the difference between synchronous and asynchronous JavaScript.
+ans: 
+
+sync - code runs line by line, the next task waits for the previous one to complete.
+ex. 
+console.log("1");
+console.log("2");
+console.log("3");
+
+async - code does not wait for the previous task to finish,
+        uses promises, async/await for handling tasks like api calls, timers (setTimeout,setTimeInterval), etc.
+
+ex.
+console.log("1");
+
+setTimeout(() => {
+  console.log("2 (after 2 sec)");
+}, 2000);
+
+console.log("3");
+
+
+
+Advanced JavaScript
+11. What is the JavaScript event loop, and how does it work?
+ans: 
+event loop ensures JavaScript runs smoothly, handling both sync and async tasks,
+sync tasks run first then async tasks wait in the queue,
+event loop moves tasks from the queue to the stack when its free
+
+
+
+12. What are promises in JavaScript? How do they differ from callbacks?
+ans:
+
+promise is object that represents future value,
+
+Pending - waiting for the operation to complete.
+Resolved - operation was successful.
+Rejected - operation failed.
+
+it differ from callbacks because, better error handling using catch methods, easier to read and maintain.
+
+
+
+13. Explain async and await. How do they improve asynchronous code?
+ans:
+
+async and await are modern type to handle asynchronous tasks in JavaScript, they make promises easier to read and write, just like synchronous code.
+
+async - declares a function that always returns a promise.
+await - pauses the execution inside an async function until the promise is resolved
+
+improve by using try catch methods
+
+
+
+14. What is the difference between map, filter, reduce, and forEach?
+ans:
+
+map() - use to iterate and modify each element
+
+ex.
+var num = [1, 2, 3];
+var newNum = num.map((element) => element ** 2);
+console.log(newNum, "newNum");
+
+forEach() - use to perform an operation without returning a new array
+
+ex.
+var num = [1, 2, 3];
+num.forEach((e) => {
+  if (e % 2 == 0) {
+    console.log(`${e} is even`);
+  } else {
+    console.log(`${e} is odd`);
+  }
+});
+
+filter() - use to create a new array using filter or conditions
+
+ex.
+var num = [1, 2, 3, 4];
+const evenNum = num.filter((e) => e % 2 == 0);
+console.log(evenNum, "evenNum");
+
+reduce() - to accumulate a value based on array element
+
+ex.
+var num = [1, 2, 3];
+
+const additionOfNumbers = num.reduce(
+  (accumulator, currentValue) => accumulator + currentValue
+);
+
+console.log(additionOfNumbers, "additionOfNumbers");
+
+
+15. What is the difference between deep copy and shallow copy? How do you create them in JavaScript?
+ans:
+
+Shallow Copy - Copies only the top-level properties, but nested objects still reference the original object.
+
+let original = { name: "siddharth", details: { age: 25 } };
+let shallowCopy = { ...original };
+
+shallowCopy.details.age = 30;
+
+change original value also
+
+
+
+deep Copy - Copies everything, including nested objects, creating a completely independent copy.
+
+let deepCopy = { name: "siddharth", details: { age: 25 } };
+
+deepCopy.details.age = 35; 
+
+does not change original
+
+
+
+16. What are WeakMap and WeakSet? How do they differ from Map and Set?
+
+
+17. How does JavaScript handle memory management and garbage collection?
+
+
+18. What is debouncing and throttling? How do you implement them?
+ans:
+debouncing - ensures a function is only called after a certain amount of time has passed since the last call. 
+throttling - ensures a function is called at most once every specified period of time.
+
+19. Explain requestAnimationFrame. How is it better than setTimeout?
+
+20. What is WebSockets, and how is it different from HTTP requests?
