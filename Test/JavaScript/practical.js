@@ -108,7 +108,16 @@ const mergeSortedArray = (array1, array2) => {
     mergeArray.push(array2[i]);
   }
 
-  for(let i=0;i<mergeArray.length)
+  for (let i = 0; i < mergeArray.length; i++) {
+    for (let j = 0; j < mergeArray.length - i; j++) {
+      if (mergeArray[j] > mergeArray[j + 1]) {
+        let temp = mergeArray[j];
+        mergeArray[j] = mergeArray[j + 1];
+        mergeArray[j + 1] = temp;
+      }
+    }
+  }
+
   return mergeArray;
 };
 
@@ -123,25 +132,24 @@ console.log(mergeSortedArray([0, 8, 10], [1, 9, 11]));
 // ✅ Input: [1, 2, 2, 1], [2, 2] ✅ Output: [2, 2]
 // ✅ Input: [4, 9, 5], [9, 4, 9, 8, 4] ✅ Output: [4, 9]
 
-const Intersection = (array1, array2) => {
-  let newArray = array1;
+// const Intersection = (array1, array2) => {
+//   let newArray = [];
 
-  console.log(newArray);
+//   for (let i = 0; i < array1.length; i++) {
+//     for (let j = 0; j < array2.length; j++) {
+//       if (array1[i] === array2[j]) {
+//         newArray.push(array2[j]);
+//         array2[j] = null;
+//         break;
+//       }
+//     }
+//   }
 
-  //   for (let i = 0; i < array1.length; i++) {
-  //     for (let j = 0; j < array2.length; j++) {
-  //       if (array1[i] === array2[j]) {
-  //         newArray.push(array2[j]);
-  //         break;
-  //       }
-  //     }
-  //   }
+//   return newArray;
+// };
 
-  //   return newArray;
-};
-
-console.log(Intersection([1, 2, 2, 1], [2, 2]));
-console.log(Intersection([4, 9, 5], [9, 4, 9, 8, 4]));
+// console.log(Intersection([1, 2, 2, 1], [2, 2]));
+// console.log(Intersection([4, 9, 5], [9, 4, 9, 8, 4]));
 
 // 10. Flatten a Nested Array ✅ Input: [1, [2, [3, 4], 5], 6] → Output: [1, 2, 3, 4, 5, 6] ✅ Input: [10, [20, [30, [40]]]] → Output: [10, 20, 30, 40]
 
@@ -151,21 +159,21 @@ console.log(Intersection([4, 9, 5], [9, 4, 9, 8, 4]));
 // **
 // *
 
-const drawPattern = () => {
-  let pattern = "";
-  let rows = 4;
-  let i = 1;
+// const drawPattern = () => {
+//   let pattern = "";
+//   let rows = 4;
+//   let i = 1;
 
-  while (i <= rows) {
-    if (i % 2 !== 0) {
-      pattern += "* *\n";
-    } else {
-      pattern += "*\n";
-    }
-    i++;
-  }
+//   while (i <= rows) {
+//     if (i % 2 !== 0) {
+//       pattern += "* *\n";
+//     } else {
+//       pattern += "*\n";
+//     }
+//     i++;
+//   }
 
-  console.log(pattern);
-};
+//   console.log(pattern);
+// };
 
-drawPattern();
+// drawPattern();
