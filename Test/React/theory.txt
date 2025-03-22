@@ -1,0 +1,233 @@
+React Theory Questions
+
+1. What is React, and how does it differ from other JavaScript frameworks?
+ans: react is a js library developed by facebook for building UI, 
+     especially for single page applications,
+     it help developers create reusable components
+
+     react uses a Virtual DOM which updates the webpage faster by changing only the required parts instead of the whole page,
+     data in react flows from parent to child which makes it easier to manage
+
+
+2. Explain the Virtual DOM and how React uses it for rendering
+ans: virtual DOM  is a same like of real DOM,
+     it is a javaScript object that represents the actual DOM structure of the webpage,
+     instead of changing the real DOM directly, react updates the Virtual DOM first because updating the real DOM is slow and affects performance.
+
+    when the react app load, the UI is first created in the Virtual DOM.
+    when there is a change in state or props, react creates a new Virtual DOM and compares it with the previous Virtual DOM,
+    only the changed part is updated in the real DOM, not the entire page
+
+
+3. What are React components, and how are they classified?
+ans: react components are reusable pieces of code that return UI elements to display on the screen,
+    Components help in breaking down the UI into smaller, manageable parts, making the code organized and easy to maintain.
+
+    there are two types of components - 1. functional 
+                                        2. class
+
+1. functional components -
+
+these are simple javaScript functions.
+they use props as input and return JSX.
+they can use react hooks like useState, useEffect to handle state and lifecycle.
+
+syntax - 
+
+function components (props) {
+  return <h1>hello, {props.name}</h1>;
+}
+
+
+2. class components - 
+
+these are created using ES6 classes,
+
+syntax - 
+
+class Welcome extends React.Component {
+  render() {
+    return <h1>Hello, {this.props.name}</h1>;
+  }
+}
+
+
+
+4. What is JSX, and why is it used in React?
+ans:  
+
+JSX is stands for javaScript XML,
+it is a syntax extension for JavaScript used in react,
+it allows developers to write HTML-like code inside JavaScript, which makes the code more readable and easy to understand,
+JSX looks like HTML but works inside JavaScript files. 
+
+it is use in react because - 
+
+Why is JSX used in React?
+JSX makes it easy to visualize the UI because it looks like HTML.
+With JSX, you can easily add JavaScript expressions inside {} brackets.
+JSX is commonly used to create components that return HTML-like structures.
+
+
+
+5. Explain the concept of state in React and how it differs from props.
+ans: 
+
+State is an object in react that stores the dynamic data of a component,
+it controls the behavior and rendering of the component when the data changes.
+
+in functional components, state is managed using the useState() hook.
+
+import { useState } from 'react';
+
+function counter() {
+  const [count, setCount] = useState(0);
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}> + </button>
+    </div>
+  );
+}
+
+
+6. What is the significance of the key prop in lists?
+ans: 
+
+in react, when we render a list of elements, we need to give each element a special key prop,
+this key helps react identify which items have changed, are added, or removed,
+key should be unique for each list item,
+key prop improves performance and check the list items are rendered and updated correctly.
+
+
+7. What are React hooks, and why were they introduced?
+ans:
+
+react hooks are special functions introduced in react that allow functional components,
+they are more powerful by allowing to handle state, side effects,
+
+common hooks
+
+useState() — for state management
+useEffect() — for side effects like API calls
+useContext() — for using context API
+
+they introduced because-
+to use State in functional components,
+code reusability,
+better readability and cleaner code,
+
+
+
+8. Explain the difference between useState, useEffect, and useRef.
+ans:
+
+useState() – for managing state
+useState is a react hook used to create and manage state in functional components.
+if the state changes, the component re-renders automatically.
+eg.
+const [count, setCount] = useState(0);
+count is the current value.
+setCount is the function to update the value
+
+
+useEffect() – for side effects
+fetching data from an API
+updating the DOM
+it runs after the component renders.
+eg.
+useEffect(() => {
+  console.log('component change');
+}, []);
+the empty array [] means it runs only once
+
+
+useRef() – for referencing DOM or storing values,
+useRef is used to access DOM elements directly or store values that don’t cause re-renders when changed.
+eg.
+const no = useRef(12);
+<h1>{no.current}
+access the value using .current 
+
+
+9. How does React handle events differently from regular JavaScript?
+
+10. What is the Context API, and how is it used?
+ans:
+
+it is a feature in react used to share data between components without passing props manually at every level,
+it provides a way to create global data that can be accessed by any component in the react app,
+
+steps: 
+create context,
+provide the context value,
+access the context value
+
+
+11. How does React's reconciliation algorithm work?
+
+12. What are Higher Order Components (HOCs), and when should you use them?
+ans:
+HOC is a function that takes a component as an argument and returns a new component with added functionality,
+it is a pattern used for reusing component logic in React.
+
+13. Explain the concept of prop drilling and how to avoid it.
+ans:
+
+Prop drilling happens when data is passed from a parent component to a child component through multiple components, 
+even if those components don’t need the data.
+it makes the code complex, hard to manage, especially in large application
+
+to avoid this we use - context API, redux
+
+14. What is lazy loading in React, and how does it improve performance?
+ans:
+
+lazy loading is a technique in React where components or images are loaded only when they are needed,
+to reduce the initial load time of the application,
+improves performance by splitting the code and loading only required parts,
+
+15. Explain React portals and their use cases.
+
+16. What are controlled and uncontrolled components in React forms?
+
+17. How does React handle error boundaries, and why are they important?
+
+18. Explain the difference between functional and class components.
+ans:
+
+functional components-
+simple javaScript functions
+return JSX
+we can use React hooks like useState, useEffect
+Easier to write, read, and test
+eg.
+function Welcome() {
+  return <h1>Hello Functional Component</h1>;
+}
+
+class components-
+use ES6 class syntax
+extend react.components
+more complex and bigger in size
+eg.
+class Welcome extends React.Component {
+  render() {
+    return <h1>Hello from Class Component</h1>;
+  }
+}
+
+
+19. What are Pure Components, and how do they optimize performance?
+
+20. How does React optimize rendering using memoization techniques (React.memo, useMemo, and useCallback)?
+ans:
+
+React.memo - Memoizes whole component	
+            Avoid re-render if props didn’t change
+
+useMemo() -	Memoizes calculation value
+        	Avoid re-running expensive functions
+
+useCallback() -	Memoizes function reference
+            	Avoid function re-creation on each render
