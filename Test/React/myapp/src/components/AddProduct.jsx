@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { addProduct } from "../store/slices/cartSlice";
 
 const AddProduct = () => {
   const dispatch = useDispatch();
-  const { allProducts } = useSelector((state) => state.cart);
 
-  const [addPro, setAddPro] = useState({});
+  const [addPro, setAddPro] = useState({
+    id: "",
+    name: "",
+    price: "",
+  });
 
   function handleChange(event) {
     setAddPro((prev) => ({
@@ -17,18 +20,25 @@ const AddProduct = () => {
 
   function handleSubmit(event) {
     event.preventDefault();
+
+    if (!addPro.id || !addPro.name || !addPro.price) {
+      alert("Please fill all fields");
+      return;
+    }
+
     dispatch(addProduct(addPro));
     console.log(addPro);
-    setAddPro({});
+    setAddPro({
+      id: "",
+      name: "",
+      price: "",
+    });
   }
 
-  useEffect(() => {
-    localStorage.setItem("all-products", JSON.stringify(allProducts));
-  }, [allProducts]);
   return (
     <>
       <div className="container" style={{ flexDirection: "column" }}>
-        <h1 style={{ marginBottom: "15px" }}>add-products</h1>
+        <h1 style={{ marginBottom: "15px" }}>Add Product</h1>
 
         <form
           onSubmit={handleSubmit}
@@ -43,33 +53,28 @@ const AddProduct = () => {
         >
           <input
             type="text"
-            placeholder="enter product ID"
+            placeholder="Enter product ID"
             onChange={handleChange}
             name="id"
-            value={addPro.id || ""}
+            value={addPro.id}
           />
           <input
             type="text"
-            placeholder="enter product name.."
+            placeholder="Enter product name"
             onChange={handleChange}
             name="name"
-            value={addPro.name || ""}
+            value={addPro.name}
           />
+
           <input
-            type="text"
-            placeholder="enter product price.."
+            type="number"
+            placeholder="Enter product price"
             onChange={handleChange}
             name="price"
-            value={addPro.price || ""}
+            value={addPro.price}
           />
-          <input
-            type="text"
-            placeholder="enter product quantity"
-            onChange={handleChange}
-            name="quantity"
-            value={addPro.quantity || ""}
-          />
-          <button type="submit">add product</button>
+
+          <button type="submit">Add Product</button>
         </form>
       </div>
     </>

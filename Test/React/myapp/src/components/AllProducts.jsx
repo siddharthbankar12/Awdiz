@@ -3,16 +3,27 @@ import { useSelector, useDispatch } from "react-redux";
 import { updateCart } from "../store/slices/cartSlice";
 
 const AllProducts = () => {
-  const { allProducts } = useSelector((state) => state.cart);
+  const { allProducts, cartProducts } = useSelector((state) => state.cart);
+
   const dispatch = useDispatch();
 
   const [addToCart, setAddToCart] = useState([]);
 
   const handleCartSubmit = (idx) => {
     const selectedProduct = allProducts[idx];
-    setAddToCart(selectedProduct);
-    dispatch(updateCart(addToCart));
-    console.log(addToCart);
+
+    const isAlreadyInCart = cartProducts.some(
+      (product) => product.id === selectedProduct.id
+    );
+
+    if (isAlreadyInCart) {
+      alert("Product is already added to the cart");
+    } else {
+      dispatch(updateCart(selectedProduct));
+      setAddToCart(selectedProduct);
+      alert("Product is added to the cart");
+      console.log(selectedProduct);
+    }
   };
 
   useEffect(() => {
@@ -41,13 +52,21 @@ const AllProducts = () => {
               display: "inline-block",
               cursor: "pointer",
             }}
+            onClick={() => handleCartSubmit(idx)}
           >
-            <p onClick={() => handleCartSubmit(idx)}>Add To Cart</p>
+            <p>
+              <b>Add To Cart</b>
+            </p>
           </div>
-          <h3>id: {product.id}</h3>
-          <h3>product name: {product.name}</h3>
-          <h3>product price: {product.price}</h3>
-          <h3>product quantity: {product.quantity}</h3>
+          <p>
+            ID : <b>{product.id}</b>
+          </p>
+          <p>
+            Product Name : <b> {product.name}</b>
+          </p>
+          <p>
+            Product Price : <b>{product.price}</b>
+          </p>
         </div>
       ))}
     </div>
