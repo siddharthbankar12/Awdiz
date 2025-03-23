@@ -12,7 +12,7 @@ const AllProducts = () => {
   const handleCartSubmit = (idx) => {
     const selectedProduct = allProducts[idx];
 
-    const isAlreadyInCart = cartProducts.some(
+    const isAlreadyInCart = cartProducts.find(
       (product) => product.id === selectedProduct.id
     );
 
@@ -31,44 +31,49 @@ const AllProducts = () => {
   }, [addToCart]);
 
   return (
-    <div className="container" style={{ flexDirection: "column" }}>
-      <h1>All Products</h1>
-      {allProducts.map((product, idx) => (
-        <div
-          key={idx}
-          style={{
-            margin: "10px",
-            border: "1px solid black",
-            display: "inline-block",
-            padding: "15px",
-            textAlign: "center",
-          }}
-        >
+    <div className="container">
+      {allProducts.length === 0 ? (
+        <h3 style={{ textAlign: "center", marginTop: "20px" }}>
+          No Products Available. Please Add Products!
+        </h3>
+      ) : (
+        allProducts.map((product, idx) => (
           <div
+            key={idx}
             style={{
-              border: "1px solid black",
-              padding: "5px",
               margin: "10px",
+              border: "1px solid black",
               display: "inline-block",
-              cursor: "pointer",
+              padding: "15px",
+              textAlign: "center",
             }}
-            onClick={() => handleCartSubmit(idx)}
           >
+            <div
+              style={{
+                border: "1px solid black",
+                padding: "5px",
+                margin: "10px",
+                display: "inline-block",
+                cursor: "pointer",
+              }}
+              onClick={() => handleCartSubmit(idx)}
+            >
+              <p>
+                <b>Add To Cart</b>
+              </p>
+            </div>
             <p>
-              <b>Add To Cart</b>
+              ID : <b>{product.id}</b>
+            </p>
+            <p>
+              Product Name : <b> {product.name}</b>
+            </p>
+            <p>
+              Product Price : <b>{product.price}</b>
             </p>
           </div>
-          <p>
-            ID : <b>{product.id}</b>
-          </p>
-          <p>
-            Product Name : <b> {product.name}</b>
-          </p>
-          <p>
-            Product Price : <b>{product.price}</b>
-          </p>
-        </div>
-      ))}
+        ))
+      )}
     </div>
   );
 };

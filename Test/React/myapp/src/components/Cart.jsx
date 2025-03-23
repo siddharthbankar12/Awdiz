@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { updateQuantity, removeProduct } from "../store/slices/cartSlice";
+import {
+  updateQuantity,
+  removeProduct,
+  calculateTotal,
+} from "../store/slices/cartSlice";
 
 const Cart = () => {
-  const { cartProducts } = useSelector((state) => state.cart);
+  const { cartProducts, totalPrice } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
-  let totalPrice = 0;
-  cartProducts.forEach((product) => {
-    totalPrice += product.price * product.quantity;
-  });
+  useEffect(() => {
+    dispatch(calculateTotal());
+  }, [cartProducts, dispatch]);
 
   return (
     <>

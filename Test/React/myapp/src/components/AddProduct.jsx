@@ -38,7 +38,7 @@ const AddProduct = () => {
   return (
     <>
       <div className="container" style={{ flexDirection: "column" }}>
-        <h1 style={{ marginBottom: "15px" }}>Add Product</h1>
+        <h2 style={{ marginBottom: "15px" }}>Add Product Details</h2>
 
         <form
           onSubmit={handleSubmit}
