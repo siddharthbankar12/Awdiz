@@ -3,12 +3,14 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import AllRouters from "./routes/index.js";
 import logger from "./log/logger.js";
+import cors from "cors";
 
 const app = express();
 
 dotenv.config();
 app.use(express.json());
 app.use(logger);
+app.use(cors());
 
 app.get("/", (req, res) => {
   res.send("Welcome to backend server");
