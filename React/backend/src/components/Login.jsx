@@ -1,50 +1,58 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import toast from "react-hot-toast";
 import { login } from "../store/userSlice";
 
 const Login = () => {
   const route = useNavigate();
   const dispatch = useDispatch();
-  const token = useSelector((state) => state.user.token);
 
-  const [counter, setCounter] = useState(1);
+  const token = JSON.parse(localStorage.getItem("token"));
 
   const [userData, setUserData] = useState({
-    username: "mor_2314",
-    password: "83r5^_",
+    email: "",
+    password: "",
   });
 
+  // const [counter, setCounter] = useState(1);
+
   const handleChange = (event) => {
-    setUserData((prevData) => ({
-      ...prevData,
-      [event.target.name]: event.target.value,
-    }));
+    setUserData({ ...userData, [event.target.name]: event.target.value });
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const response = await axios.post("https://fakestoreapi.com/auth/login", {
-        username: userData.username,
-        password: userData.password,
-      });
+      const responseUser = await axios.post(
+        "http://localhost:8000/api/v1/auth/login",
+        { email: userData.email, password: userData.password }
+      );
 
-      dispatch(login(response.data.token));
-
-      route("/all-products");
-    } catch (error) {
-      if (counter === 2) {
-        const token = "fuktya_ghe_chal_token";
-        dispatch(login(token));
+      if (responseUser.data.success) {
+        dispatch(login(responseUser.data.userData));
+        toast.success(responseUser.data.message);
+        setUserData({ email: "", password: "" });
         route("/all-products");
-        setCounter(1);
       } else {
-        alert("please try again");
-        setCounter(counter + 1);
+        toast.error(responseUser.data.message);
       }
+    } catch (error) {
+      // if (counter === 2) {
+      //   const token = "fuktya_ghe_chal_token";
+      //   dispatch(login(token));
+      //   route("/all-products");
+      //   setCounter(1);
+      // } else {
+      //   alert("please try again");
+      //   setCounter(counter + 1);
+      // }
+
+      toast.error(
+        error.responseUser.data.message || error.responseUser.data.error
+      );
     }
   };
 
@@ -64,14 +72,14 @@ const Login = () => {
           onSubmit={handleSubmit}
           className="flex flex-col items-center p-3 gap-3"
         >
-          <label htmlFor="username">Username </label>
+          <label htmlFor="email">Email </label>
           <input
             type="text"
-            id="username"
-            name="username"
-            value={userData.username}
+            id="email"
+            name="email"
+            value={userData.email}
             onChange={handleChange}
-            placeholder="Enter your username"
+            placeholder="Enter your email"
             className="p-1 text-black"
             required
           />

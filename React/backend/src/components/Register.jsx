@@ -12,8 +12,8 @@ function Register() {
     password: "",
     confirmPassword: "",
   });
-  const [allUser, setAllUser] = useState([]);
-  console.log(allUser);
+  // const [allUser, setAllUser] = useState([]);
+  // console.log(allUser);
 
   const handleChange = (event) => {
     setUserData({ ...userData, [event.target.name]: event.target.value });
@@ -21,6 +21,11 @@ function Register() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const response = await axios.post(
+      "http://localhost:8000/api/v1/auth/register",
+      { userData }
+    );
+
     try {
       if (
         userData.name &&
@@ -29,14 +34,10 @@ function Register() {
         userData.confirmPassword
       ) {
         if (userData.password === userData.confirmPassword) {
-          const response = await axios.post(
-            "http://localhost:8000/api/v1/auth/register",
-            { userData }
-          );
           if (response.data.success === true) {
             toast.success(response.data.message);
             console.log(response.data, "response from register API");
-            setAllUser([...allUser, userData]);
+            // setAllUser([...allUser, userData]);
             setUserData({
               name: "",
               email: "",
@@ -48,14 +49,15 @@ function Register() {
             toast.error(response.data.message);
           }
         } else {
-          toast.error("Password is not matched");
+          toast.error(response.data.message);
         }
       } else {
-        toast.error("All fields are required");
+        toast.error(response.data.message);
       }
     } catch (error) {
-      console.log(error, "error while submitting register");
-      toast.error(error.response.data.message);
+      console.log(error, "frontend");
+      console.log(response.data.message, "backend");
+      toast.error(response.data.message);
     }
   };
   return (
@@ -128,18 +130,16 @@ function Register() {
           <br />
         </form>
       </div>
-      <div id="userList" className="mx-auto border text-center mt-5 w-[60%]">
+      {/* <div id="userList" className="mx-auto border text-center mt-5 w-[60%]">
         <h2>All users</h2>
         {allUser.map((user, idx) => (
           <div key={idx} className="border flex justify-between px-5 py-1">
             <h3>User {idx + 1}</h3>
             <h5>name : {user.name}</h5>
             <h5>email : {user.email}</h5>
-            <h5>password : {user.password}</h5>
-            <h5>confirm password : {user.confirmPassword}</h5>
           </div>
         ))}
-      </div>
+      </div> */}
     </>
   );
 }

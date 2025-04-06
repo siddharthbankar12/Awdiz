@@ -1,13 +1,16 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../store/userSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const token = localStorage.getItem("token");
+  const token = JSON.parse(localStorage.getItem("token"));
+  const userData = useSelector((state) => state.user.user);
+
+  const userNameUpperCase = userData?.name?.toUpperCase();
 
   const loginUser = () => {
     navigate("/login");
@@ -38,6 +41,8 @@ const Navbar = () => {
           >
             All Products
           </li>
+
+          <li> {token ? `Hello ${userNameUpperCase}` : ""}</li>
 
           <li
             onClick={token ? logoutUser : loginUser}
