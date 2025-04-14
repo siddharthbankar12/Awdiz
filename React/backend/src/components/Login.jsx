@@ -16,8 +16,6 @@ const Login = () => {
     password: "",
   });
 
-  // const [counter, setCounter] = useState(1);
-
   const handleChange = (event) => {
     setUserData({ ...userData, [event.target.name]: event.target.value });
   };
@@ -31,7 +29,9 @@ const Login = () => {
         { email: userData.email, password: userData.password }
       );
 
-      if (responseUser.data.success) {
+      console.log(responseUser);
+
+      if (responseUser.data.success === true) {
         dispatch(login(responseUser.data.userData));
         toast.success(responseUser.data.message);
         setUserData({ email: "", password: "" });
@@ -40,16 +40,6 @@ const Login = () => {
         toast.error(responseUser.data.message);
       }
     } catch (error) {
-      // if (counter === 2) {
-      //   const token = "fuktya_ghe_chal_token";
-      //   dispatch(login(token));
-      //   route("/all-products");
-      //   setCounter(1);
-      // } else {
-      //   alert("please try again");
-      //   setCounter(counter + 1);
-      // }
-
       toast.error(
         error.responseUser.data.message || error.responseUser.data.error
       );
@@ -64,15 +54,11 @@ const Login = () => {
 
   return (
     <>
-      <div className="m-auto my-28 border flex flex-col items-center w-fit">
-        <h1 className="p-5 text-lg text-center font-bold border w-full">
-          Login
-        </h1>
-        <form
-          onSubmit={handleSubmit}
-          className="flex flex-col items-center p-3 gap-3"
-        >
-          <label htmlFor="email">Email </label>
+      <div className="border w-fit mx-auto mt-16">
+        <h1 className="border p-5 text-center font-bold">Login</h1>
+        <form onSubmit={handleSubmit} className="m-5">
+          <label htmlFor="email">Email :</label>
+          <br />
           <input
             type="text"
             id="email"
@@ -80,10 +66,12 @@ const Login = () => {
             value={userData.email}
             onChange={handleChange}
             placeholder="Enter your email"
-            className="p-1 text-black"
+            className="mb-3 text-black px-2"
             required
           />
-          <label htmlFor="password">Password </label>
+          <br />
+          <label htmlFor="password">Password :</label>
+          <br />
           <input
             type="password"
             id="password"
@@ -91,10 +79,11 @@ const Login = () => {
             value={userData.password}
             onChange={handleChange}
             placeholder="Enter your password"
-            className="p-1 text-black"
+            className="mb-3 text-black px-2"
             required
           />
-          <div className="flex justify-between gap-5">
+          <br />
+          <div className="flex justify-between mt-3">
             <button type="submit" className="border px-3 py-1">
               Submit
             </button>

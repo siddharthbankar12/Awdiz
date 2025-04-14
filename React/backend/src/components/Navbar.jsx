@@ -7,7 +7,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const token = JSON.parse(localStorage.getItem("token"));
+  const tokenFromLS = JSON.parse(localStorage.getItem("token"));
   const userData = useSelector((state) => state.user.user);
 
   const userNameUpperCase = userData?.name?.toUpperCase();
@@ -42,13 +42,13 @@ const Navbar = () => {
             All Products
           </li>
 
-          <li> {token ? `Hello ${userNameUpperCase}` : ""}</li>
+          <li> {tokenFromLS ? `Hello ${userNameUpperCase}` : ""}</li>
 
           <li
-            onClick={token ? logoutUser : loginUser}
+            onClick={tokenFromLS ? logoutUser : loginUser}
             className="cursor-pointer"
           >
-            {token ? "Logout" : "Login"}
+            {tokenFromLS ? "Logout" : "Login"}
           </li>
         </ul>
       </div>

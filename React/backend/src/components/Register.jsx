@@ -66,7 +66,7 @@ function Register() {
         <h1 className="border p-5 text-center font-bold">Register Page</h1>
 
         <form
-          className="border m-5"
+          className="m-5"
           onSubmit={handleSubmit}
           style={{
             textAlign: "left",
@@ -82,6 +82,7 @@ function Register() {
             name="name"
             onChange={handleChange}
             value={userData.name}
+            placeholder="Enter your name"
             required
           />
           <br />
@@ -93,6 +94,7 @@ function Register() {
             name="email"
             onChange={handleChange}
             value={userData.email}
+            placeholder="Enter your email"
             required
           />
           <br />
@@ -104,6 +106,7 @@ function Register() {
             name="password"
             onChange={handleChange}
             value={userData.password}
+            placeholder="Password"
           />
           <br />
           <label htmlFor="confirmPassword">Confirm Password : </label> <br />
@@ -114,6 +117,7 @@ function Register() {
             name="confirmPassword"
             onChange={handleChange}
             value={userData.confirmPassword}
+            placeholder="Confirm password"
           />
           <br />
           <div className="flex justify-between mt-3">
