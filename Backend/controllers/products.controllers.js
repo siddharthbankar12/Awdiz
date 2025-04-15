@@ -1,46 +1,28 @@
-const productsList = [
-  {
-    id: 1,
-    name: "Laptop",
-    brand: "Apple",
-    category: "Electronics",
-    price: 1299.99,
-  },
-  {
-    id: 2,
-    name: "Smartphone",
-    brand: "Samsung",
-    category: "Electronics",
-    price: 799.99,
-  },
-  {
-    id: 3,
-    name: "Running Shoes",
-    brand: "Nike",
-    category: "Sports",
-    price: 99.99,
-  },
-  {
-    id: 4,
-    name: "Coffee Maker",
-    brand: "Keurig",
-    category: "Kitchen Appliances",
-    price: 149.99,
-  },
-  {
-    id: 5,
-    name: "Bluetooth Speaker",
-    brand: "JBL",
-    category: "Electronics",
-    price: 79.99,
-  },
-];
-
-export const ProductList = (req, res) => {
-  res.setHeader("Content-Type", "application/json");
+export const AddProduct = (req, res) => {
   try {
-    return res.end(JSON.stringify(productsList));
+    const { name, price, quantity, category, image } = req.body.productData;
+    const { userId } = req.body;
+    console.log(
+      name,
+      "name",
+      price,
+      "price",
+      quantity,
+      "quantity",
+      category,
+      "category",
+      image,
+      "image"
+    );
+
+    console.log(userId, "userId");
+
+    return res.json({
+      success: true,
+      message: "Product Successfully Created ..",
+    });
   } catch (error) {
-    return res.send(error);
+    console.log(error, "error in add product api call ..");
+    return res.json({ success: false, message: error });
   }
 };

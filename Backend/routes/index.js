@@ -5,6 +5,6 @@ import ProductsRoutes from "./products.routes.js";
 const AllRouters = Router();
 
 AllRouters.use("/auth", AuthRoutes);
-AllRouters.use("/products", ProductsRoutes);
+AllRouters.use("/product", ProductsRoutes);
 
 export default AllRouters;

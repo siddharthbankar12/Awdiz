@@ -9,6 +9,7 @@ import Register from "./components/Register";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "./store/userSlice";
 import axios from "axios";
+import AddProduct from "./components/seller/AddProduct";
 
 const App = () => {
   const userData = useSelector((state) => state.user.user);
@@ -56,6 +57,7 @@ const App = () => {
           element={<SingleProduct />}
         />
         <Route path="/registration" element={<Register />} />
+        <Route path="/add-product" element={<AddProduct />} />
       </Routes>
     </>
   );

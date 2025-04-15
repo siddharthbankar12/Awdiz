@@ -35,6 +35,15 @@ const Navbar = () => {
         <ul className="flex gap-10">
           <li
             onClick={() => {
+              navigate("/add-product");
+            }}
+            className="cursor-pointer"
+          >
+            Add Product
+          </li>
+
+          <li
+            onClick={() => {
               navigate("/all-products");
             }}
             className="cursor-pointer"

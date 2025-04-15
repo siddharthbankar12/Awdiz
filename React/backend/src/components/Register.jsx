@@ -11,12 +11,15 @@ function Register() {
     email: "",
     password: "",
     confirmPassword: "",
+    role: "user",
   });
-  // const [allUser, setAllUser] = useState([]);
-  // console.log(allUser);
 
   const handleChange = (event) => {
     setUserData({ ...userData, [event.target.name]: event.target.value });
+  };
+
+  const handleChangeRole = (event) => {
+    setUserData({ ...userData, ["role"]: event.target.value });
   };
 
   const handleSubmit = async (event) => {
@@ -31,20 +34,22 @@ function Register() {
         userData.name &&
         userData.email &&
         userData.password &&
-        userData.confirmPassword
+        userData.confirmPassword &&
+        userData.role
       ) {
         if (userData.password === userData.confirmPassword) {
           if (response.data.success === true) {
             toast.success(response.data.message);
             console.log(response.data, "response from register API");
-            // setAllUser([...allUser, userData]);
+
             setUserData({
               name: "",
               email: "",
               password: "",
               confirmPassword: "",
+              role: "user",
             });
-            // route("/login");
+            route("/login");
           } else {
             toast.error(response.data.message);
           }
@@ -97,6 +102,17 @@ function Register() {
             placeholder="Enter your email"
             required
           />
+          <br />
+          <label htmlFor="role">Select Role :</label>
+          <select
+            onChange={handleChangeRole}
+            id="role"
+            className="mb-3 ml-2 text-black px-2"
+          >
+            <option value="user">User</option>
+            <option value="seller">Seller</option>
+            <option value="admin">Admin</option>
+          </select>
           <br />
           <label htmlFor="password">Password : </label> <br />
           <input

@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { ProductList } from "../controllers/products.controllers.js";
+import { AddProduct } from "../controllers/products.controllers.js";
 
 const ProductsRoutes = Router();
 
-ProductsRoutes.get("/products-list", ProductList);
+ProductsRoutes.post("/add-product", AddProduct);
 
 export default ProductsRoutes;
