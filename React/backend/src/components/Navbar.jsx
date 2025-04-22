@@ -7,9 +7,11 @@ const Navbar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const tokenFromLS = JSON.parse(localStorage.getItem("token"));
-  const userData = useSelector((state) => state.user.user);
+  const tokenFromLS = localStorage.getItem("token")
+    ? JSON.parse(localStorage.getItem("token"))
+    : null;
 
+  const userData = useSelector((state) => state.user.user);
   const userNameUpperCase = userData?.name?.toUpperCase();
 
   const loginUser = () => {
@@ -33,15 +35,19 @@ const Navbar = () => {
           Shopping
         </h1>
         <ul className="flex gap-10">
-          <li
-            onClick={() => {
-              navigate("/add-product");
-            }}
-            className="cursor-pointer"
-          >
-            Add Product
-          </li>
+          {/* Show only for seller */}
+          {tokenFromLS && userData?.role === "seller" && (
+            <li
+              onClick={() => {
+                navigate("/add-product");
+              }}
+              className="cursor-pointer"
+            >
+              Add Product
+            </li>
+          )}
 
+          {/* Show All Products always for guests and users */}
           <li
             onClick={() => {
               navigate("/all-products");
@@ -51,7 +57,20 @@ const Navbar = () => {
             All Products
           </li>
 
-          <li> {tokenFromLS ? `Hello ${userNameUpperCase}` : ""}</li>
+          {/* Show only for seller */}
+          {tokenFromLS && userData?.role === "seller" && (
+            <li
+              onClick={() => {
+                navigate("/added-products");
+              }}
+              className="cursor-pointer"
+            >
+              Added Products
+            </li>
+          )}
+
+          {/* Show Hello username if logged in */}
+          {tokenFromLS && <li>Hello {userNameUpperCase}</li>}
 
           <li
             onClick={tokenFromLS ? logoutUser : loginUser}

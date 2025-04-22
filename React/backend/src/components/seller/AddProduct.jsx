@@ -55,6 +55,7 @@ const AddProduct = () => {
             category: "computer",
             image: "",
           });
+          router("/added-products");
         } else {
           toast.error(response.data.message);
         }
@@ -68,15 +69,11 @@ const AddProduct = () => {
   };
 
   useEffect(() => {
-    if (!token) {
-      toast.error("Please login first.");
-      router("/login");
-    }
     if (!userData || (userData && userData?.role !== "seller")) {
       toast.error("You don't have access for this page.");
       router("/");
     }
-  }, [userData, token]);
+  }, [userData]);
 
   return (
     <div className="border w-fit mx-auto mt-16">
