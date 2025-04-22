@@ -26,6 +26,11 @@ const AddProduct = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    if (!userData?.userId) {
+      return toast.error("Please login.");
+    }
+
     try {
       if (
         productData.name &&
@@ -67,7 +72,7 @@ const AddProduct = () => {
       toast.error("Please login first.");
       router("/login");
     }
-    if (userData && userData?.role !== "seller") {
+    if (!userData || (userData && userData?.role !== "seller")) {
       toast.error("You don't have access for this page.");
       router("/");
     }
