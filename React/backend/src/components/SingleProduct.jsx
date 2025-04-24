@@ -40,7 +40,7 @@ const SingleProduct = () => {
           <h1 className="my-5">Product Detail</h1>
 
           {singleProduct ? (
-            <div className="flex border items-center p-[20px]">
+            <div className="flex border rounded-2xl items-center p-[20px]">
               <div className="w-[50%]  p-3">
                 <img
                   src={singleProduct.image}

@@ -14,6 +14,7 @@ import AddedProducts from "./components/seller/AddedProducts";
 
 const App = () => {
   const userData = useSelector((state) => state.user.user);
+  // console.log(userData.role);
 
   const dispatch = useDispatch();
 

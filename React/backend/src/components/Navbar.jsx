@@ -7,11 +7,11 @@ const Navbar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const tokenFromLS = localStorage.getItem("token")
-    ? JSON.parse(localStorage.getItem("token"))
-    : null;
+  const tokenFromLS = localStorage.getItem("token");
 
   const userData = useSelector((state) => state.user.user);
+
+  console.log(userData?.role, "Current User");
   const userNameUpperCase = userData?.name?.toUpperCase();
 
   const loginUser = () => {
@@ -69,7 +69,7 @@ const Navbar = () => {
           {tokenFromLS && (
             <li>
               Hello {userNameUpperCase}
-              <sub className="text-[16px]"> ({userData.role})</sub>
+              <sub className="text-[16px]"> ({userData?.role})</sub>
             </li>
           )}
 
