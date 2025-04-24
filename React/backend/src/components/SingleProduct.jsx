@@ -1,12 +1,18 @@
 import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-hot-toast";
+import { useSelector } from "react-redux";
 
 const SingleProduct = () => {
   const { id } = useParams();
   const [singleProduct, setSingleProduct] = useState({});
   const [loading, setLoading] = useState(false);
+  const [cartButtonDisable, setCartButtonDisable] = useState(false);
+  const userData = useSelector((state) => state.user.user);
+
+  const navigate = useNavigate();
 
   async function getSingleProductData() {
     try {
@@ -24,6 +30,29 @@ const SingleProduct = () => {
       setLoading(false);
     }
   }
+
+  const AddToCart = async () => {
+    try {
+      setCartButtonDisable(true);
+
+      if (!userData?.userId) {
+        return toast.error("Please login to add product to cart");
+      }
+
+      const response = await axios.post(
+        "http://localhost:8000/api/v1/user/add-to-cart",
+        { productId: id, userId: userData.userId }
+      );
+      if (response.data.success) {
+        return toast.success(response.data.message);
+        navigate("/cart");
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setCartButtonDisable(false);
+    }
+  };
 
   useEffect(() => {
     if (id) {
@@ -61,6 +90,13 @@ const SingleProduct = () => {
                 <p>
                   <b>Seller Name:</b> {singleProduct?.userId?.name}
                 </p>
+                <button
+                  className="bg-white text-black my-[10px] w-fit px-[8px] py-[4px] rounded font-bold"
+                  onClick={AddToCart}
+                  disabled={cartButtonDisable}
+                >
+                  Add To Cart
+                </button>
               </div>
             </div>
           ) : (

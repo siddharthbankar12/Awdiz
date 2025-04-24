@@ -11,6 +11,7 @@ import { login } from "./store/userSlice";
 import axios from "axios";
 import AddProduct from "./components/seller/AddProduct";
 import AddedProducts from "./components/seller/AddedProducts";
+import Cart from "./components/Cart";
 
 const App = () => {
   const userData = useSelector((state) => state.user.user);
@@ -61,6 +62,7 @@ const App = () => {
         <Route path="/registration" element={<Register />} />
         <Route path="/add-product" element={<AddProduct />} />
         <Route path="/added-products" element={<AddedProducts />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
     </>
   );
