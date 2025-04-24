@@ -48,7 +48,7 @@ const Login = () => {
 
   useEffect(() => {
     if (token) {
-      route("/all-products");
+      route("/");
     }
   }, [token]);
 

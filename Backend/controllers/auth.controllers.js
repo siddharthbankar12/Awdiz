@@ -48,7 +48,7 @@ export const Register = async (req, res) => {
 
     return res.json({ success: true, message: "register successfully .." });
   } catch (error) {
-    console.log(error, "error in login api call ..");
+    console.log(error, "error in register api call ..");
     return res.json({ success: false, message: error });
   }
 };

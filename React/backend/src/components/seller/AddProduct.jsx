@@ -135,7 +135,10 @@ const AddProduct = () => {
           <option value="laptops">Laptops</option>
           <option value="mobiles">Mobiles</option>
           <option value="ac">AC</option>
-          <option value="fans">Fans</option>
+          <option value="cpu">CPU</option>
+          <option value="monitor">Monitor</option>
+          <option value="pad">Pad</option>
+          <option value="accessories">Accessories</option>
         </select>
         <br />
         <label htmlFor="image">Product Image URL :</label> <br />

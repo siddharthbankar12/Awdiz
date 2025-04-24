@@ -50,7 +50,7 @@ const AddedProducts = () => {
                   <b>Name : </b> {product.name}
                 </h2>
                 <p>
-                  <b>Price :</b> {product.price}
+                  <b>Price :</b> ₹{product.price}
                 </p>
                 <p>
                   <b>Category :</b> {product.category}

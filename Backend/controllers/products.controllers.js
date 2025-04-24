@@ -21,6 +21,15 @@ export const AddProduct = async (req, res) => {
       });
     }
 
+    const isProductExist = await Product.findOne({ name });
+
+    if (isProductExist) {
+      return res.json({
+        success: false,
+        message: "Product name already exist, please use another one ..",
+      });
+    }
+
     const newProduct = Product({
       name,
       price,
@@ -58,7 +67,46 @@ export const AddedProducts = async (req, res) => {
       message: "Products successfully fetch ..",
     });
   } catch (error) {
-    console.log(error, "error in add product api call ..");
+    console.log(error, "error in added products api call ..");
+    return res.json({ success: false, message: error });
+  }
+};
+
+export const AllProducts = async (req, res) => {
+  try {
+    const products = await Product.find({});
+
+    return res.json({
+      products: products,
+      success: true,
+      message: "Products successfully fetch ..",
+    });
+  } catch (error) {
+    console.log(error, "error in all products api call ..");
+    return res.json({ success: false, message: error });
+  }
+};
+
+export const SingleProductData = async (req, res) => {
+  try {
+    const { productId } = req.body;
+
+    if (!productId) {
+      return res.json({
+        success: false,
+        message: "Products id is required ..",
+      });
+    }
+
+    const product = await Product.findById(productId).populate("userId");
+
+    return res.json({
+      productData: product,
+      success: true,
+      message: "Products successfully fetch ..",
+    });
+  } catch (error) {
+    console.log(error, "error in single product data  api call ..");
     return res.json({ success: false, message: error });
   }
 };

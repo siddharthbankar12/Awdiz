@@ -35,19 +35,28 @@ const Navbar = () => {
           Shopping
         </h1>
         <ul className="flex gap-10">
-          {/* Show only for seller */}
           {tokenFromLS && userData?.role === "seller" && (
-            <li
-              onClick={() => {
-                navigate("/add-product");
-              }}
-              className="cursor-pointer"
-            >
-              Add Product
-            </li>
+            <>
+              <li
+                onClick={() => {
+                  navigate("/add-product");
+                }}
+                className="cursor-pointer"
+              >
+                Add Product
+              </li>
+
+              <li
+                onClick={() => {
+                  navigate("/added-products");
+                }}
+                className="cursor-pointer"
+              >
+                Added Products
+              </li>
+            </>
           )}
 
-          {/* Show All Products always for guests and users */}
           <li
             onClick={() => {
               navigate("/all-products");
@@ -57,20 +66,12 @@ const Navbar = () => {
             All Products
           </li>
 
-          {/* Show only for seller */}
-          {tokenFromLS && userData?.role === "seller" && (
-            <li
-              onClick={() => {
-                navigate("/added-products");
-              }}
-              className="cursor-pointer"
-            >
-              Added Products
+          {tokenFromLS && (
+            <li>
+              Hello {userNameUpperCase}
+              <sub className="text-[16px]"> ({userData.role})</sub>
             </li>
           )}
-
-          {/* Show Hello username if logged in */}
-          {tokenFromLS && <li>Hello {userNameUpperCase}</li>}
 
           <li
             onClick={tokenFromLS ? logoutUser : loginUser}
