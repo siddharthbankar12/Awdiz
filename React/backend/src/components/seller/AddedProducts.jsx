@@ -2,15 +2,15 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 const AddedProducts = () => {
-  const router = useNavigate();
+  // const router = useNavigate();
   const userData = useSelector((state) => state.user.user);
   const [products, setProducts] = useState([]);
 
   const getAddedProducts = async () => {
-    if (userData?.userId && userData.role == "seller") {
+    if (userData?.userId && userData.role === "seller") {
       try {
         const response = await axios.post(
           "http://localhost:8000/api/V1/product/added-products",
@@ -25,7 +25,7 @@ const AddedProducts = () => {
 
   useEffect(() => {
     getAddedProducts();
-    if (userData && userData?.role != "seller") {
+    if (userData && userData?.role !== "seller") {
       toast.error("You don't have access for this page.");
       //   router("/");
     }

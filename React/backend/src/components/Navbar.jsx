@@ -14,6 +14,8 @@ const Navbar = () => {
   console.log(userData?.role, "Current User");
   const userNameUpperCase = userData?.name?.toUpperCase();
 
+  console.log(userData);
+
   const loginUser = () => {
     navigate("/login");
   };
@@ -67,10 +69,21 @@ const Navbar = () => {
           </li>
 
           {tokenFromLS && (
-            <li>
-              Hello {userNameUpperCase}
-              <sub className="text-[16px]"> ({userData?.role})</sub>
-            </li>
+            <>
+              <li
+                onClick={() => {
+                  navigate("/cart");
+                }}
+                className="cursor-pointer"
+              >
+                Cart
+              </li>
+
+              <li>
+                Hello {userNameUpperCase}
+                <sub className="text-[16px]"> {userData?.role}</sub>
+              </li>
+            </>
           )}
 
           <li
