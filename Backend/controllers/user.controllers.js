@@ -1,6 +1,7 @@
 import User from "../models/user.schema.js";
 import Product from "../models/product.schema.js";
 import Cart from "../models/cart.schema.js";
+import Order from "../models/order.schema.js";
 
 export const AddToCart = async (req, res) => {
   try {
@@ -9,18 +10,18 @@ export const AddToCart = async (req, res) => {
     if (!userId || !productId) {
       return res.json({
         success: false,
-        message: "User and Product are required.",
+        message: "User and Product are required",
       });
     }
 
     const isUserExist = await User.findById(userId);
     if (!isUserExist) {
-      return res.json({ success: false, message: "User not found." });
+      return res.json({ success: false, message: "User not found" });
     }
 
     const isProductExist = await Product.findById(productId);
     if (!isProductExist) {
-      return res.json({ success: false, message: "Product not found." });
+      return res.json({ success: false, message: "Product not found" });
     }
 
     const cart = await Cart.findOne({ userId });
@@ -44,10 +45,10 @@ export const AddToCart = async (req, res) => {
       });
     }
 
-    return res.json({ success: true, message: "Product added to cart." });
+    return res.json({ success: true, message: "Product added to cart" });
   } catch (error) {
     console.log(error);
-    return res.json({ success: false, message: "Server error" });
+    return res.json({ success: false, error });
   }
 };
 
@@ -81,7 +82,7 @@ export const GetCartProducts = async (req, res) => {
     });
   } catch (error) {
     console.log(error);
-    return res.json({ success: false, message: "Server error" });
+    return res.json({ success: false, error });
   }
 };
 
@@ -115,7 +116,7 @@ export const UpdateCartProductQuantity = async (req, res) => {
     return res.json({ success: true, message: "Cart updated" });
   } catch (error) {
     console.log(error);
-    return res.json({ success: false, message: "Server error" });
+    return res.json({ success: false, error });
   }
 };
 
@@ -136,6 +137,78 @@ export const DeleteCartProduct = async (req, res) => {
     return res.json({ success: true, message: "Product removed from cart" });
   } catch (error) {
     console.log(error);
-    return res.json({ success: false, message: "Server error" });
+    return res.json({ success: false, error });
+  }
+};
+
+export const CheckOut = async (req, res) => {
+  try {
+    const { userId, products } = req.body;
+
+    if (!userId) {
+      return res.json({ success: false, message: "User is required" });
+    }
+    if (!products || products.length == 0) {
+      return res.json({ success: false, message: "Products are required" });
+    }
+
+    const isUserExist = await User.findById(userId);
+    if (!isUserExist) {
+      return res.json({ success: false, message: "User not found" });
+    }
+
+    let allProducts = [];
+    let totalPrice = 0;
+
+    for (let i = 0; i < products.length; i++) {
+      allProducts.push({
+        productId: products[i]._id,
+        quantity: products[i].quantity,
+      });
+      totalPrice += products[i].price * products[i].quantity;
+    }
+
+    const newOrder = Order({
+      userId,
+      products: allProducts,
+      price: totalPrice,
+    });
+
+    await newOrder.save();
+
+    await Cart.findOneAndUpdate({ userId }, { products: [] });
+
+    return res.json({
+      success: true,
+      message: "Order Successful, you'll get product delivered soon",
+    });
+  } catch (error) {
+    console.log(error);
+    return res.json({ success: false, error });
+  }
+};
+
+export const GetOrderHistory = async (req, res) => {
+  try {
+    const { userId } = req.body;
+    if (!userId) {
+      return res.json({ success: false, message: "User not found" });
+    }
+    const ordersUserData = await Order.find({ userId }).populate(
+      "products.productId"
+    );
+    if (ordersUserData?.length == 0) {
+      return res.json({
+        success: false,
+        message: "No orders found.",
+      });
+    }
+    return res.json({
+      success: true,
+      orders: ordersUserData,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.json({ success: false, error });
   }
 };

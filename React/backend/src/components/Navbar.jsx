@@ -79,6 +79,15 @@ const Navbar = () => {
                 Cart
               </li>
 
+              <li
+                onClick={() => {
+                  navigate("/order-history");
+                }}
+                className="cursor-pointer"
+              >
+                Order-History
+              </li>
+
               <li>
                 Hello {userNameUpperCase}
                 <sub className="text-[16px]"> {userData?.role}</sub>

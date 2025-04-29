@@ -4,14 +4,17 @@ import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 import { MdDelete } from "react-icons/md";
 import { FaPlus, FaMinus } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const userData = useSelector((state) => state.user.user);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [quantity, setQuantity] = useState(0);
+  const router = useNavigate();
 
-  const getCartProducts = async () => {
+  const getCartProducts = async (e) => {
     try {
       if (!userData?.userId) {
         return toast.error("Please login to view cart products");
@@ -23,11 +26,18 @@ const Cart = () => {
       );
       if (response.data.success) {
         setProducts(response.data.products);
+
+        let totalQuantity = 0;
+        response.data.products.forEach((item) => {
+          totalQuantity += item.quantity;
+        });
+        setQuantity(totalQuantity);
+
         setTotalPrice(response.data.totalPrice);
       }
-      setLoading(false);
     } catch (error) {
       console.log(error);
+    } finally {
       setLoading(false);
     }
   };
@@ -58,6 +68,25 @@ const Cart = () => {
       }
     } catch (error) {
       console.log(error);
+    }
+  };
+
+  const checkOut = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.post(
+        "http://localhost:8000/api/v1/user/checkout",
+        { userId: userData.userId, products }
+      );
+
+      if (response.data.success) {
+        toast.success(response.data.message);
+        router("/order-history");
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -104,7 +133,7 @@ const Cart = () => {
                   <p>
                     <b>Category:</b> {product.category}
                   </p>
-                  <p className="flex gap-2">
+                  <div className="flex gap-2">
                     <b>Quantity:</b>
                     <div className="flex gap-2 items-center">
                       <FaPlus
@@ -119,7 +148,7 @@ const Cart = () => {
                         onClick={() => updateQuantity(product._id, "decrease")}
                       />
                     </div>
-                  </p>
+                  </div>
                 </div>
               ))
             ) : (
@@ -131,11 +160,17 @@ const Cart = () => {
             <b className="text-2xl">Cart Details</b>
             <div className="flex flex-col gap-2">
               <p>
-                <b>Total Cart Products:</b> {products.length}
+                <b>Total Cart Products:</b> {quantity}
               </p>
               <p>
                 <b>Total Price:</b> ₹{totalPrice}
               </p>
+              <button
+                className="bg-white text-black rounded font-bold mt-5 py-2"
+                onClick={checkOut}
+              >
+                Proceed To Payment
+              </button>
             </div>
           </div>
         </div>
